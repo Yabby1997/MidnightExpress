@@ -1,4 +1,4 @@
-//
+    //
 //  ContentViewModel.swift
 //  MidnightExpDev
 //
@@ -13,6 +13,12 @@ import Obscura
 import Photos
 import UIKit
 
+enum ExposureState {
+    case over
+    case correct
+    case under
+}
+
 @MainActor
 final class ContentViewModel: ObservableObject {
     let camera = ObscuraCamera()
@@ -22,10 +28,13 @@ final class ContentViewModel: ObservableObject {
     @Published var isCapturing: Bool = false
     @Published var shutterSpeed: Float = .zero
     @Published var iso: Float = .zero
-    @Published var aperture: Float = .zero
     @Published var exposureValue: Float = .zero
+    @Published var frameRate: Int = 12
+    @Published var exposureOffset: Float = .zero
+    @Published var exposureState: ExposureState = .correct
     
-    var cancellable: AnyCancellable?
+    private var cancellables: Set<AnyCancellable> = []
+    private var adjustingTask: Task<Void, Never>?
 
     func setup() async {
         do {
@@ -35,15 +44,6 @@ final class ContentViewModel: ObservableObject {
             print("Error: \(error)")
         }
         
-        camera.isCapturing
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$isCapturing)
-        
-        Publishers.CombineLatest3(camera.iso, camera.shutterSpeed, camera.aperture)
-            .compactMap { try? LightMeterService.getExposureValue(iso: $0, shutterSpeed: $1, aperture: $2) }
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$exposureValue)
-        
         camera.iso
             .receive(on: DispatchQueue.main)
             .assign(to: &$iso)
@@ -52,9 +52,64 @@ final class ContentViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$shutterSpeed)
         
-        camera.aperture
+        camera.isCapturing
             .receive(on: DispatchQueue.main)
-            .assign(to: &$aperture)
+            .assign(to: &$isCapturing)
+        
+        camera.exposureValue
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$exposureValue)
+        
+        camera.exposureOffset
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$exposureOffset)
+        
+        camera.exposureOffset
+            .compactMap { offset -> ExposureState? in
+                if -1...1 ~= offset {
+                    return .correct
+                } else if offset < -1 {
+                    return .under
+                } else if offset > 1 {
+                    return .over
+                } else {
+                    return nil
+                }
+            }
+            .removeDuplicates()
+            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .assign(to: &$exposureState)
+        
+        Publishers.CombineLatest3($frameRate, camera.exposureValue, camera.aperture)
+            .sink { [weak self] frameRate, exposureValue, apertureValue in
+                self?.adjustFrameRate(frameRate, exposureValue: exposureValue, apertureValue: apertureValue)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func adjustFrameRate(_ frameRate: Int, exposureValue: Float, apertureValue: Float) {
+        adjustingTask?.cancel()
+        adjustingTask = Task {
+            do {
+                try Task.checkCancellation()
+                try camera.lockFrameRate(Int32(frameRate))
+                try Task.checkCancellation()
+                try await camera.lockExposure(
+                    shutterSpeed: .init(
+                        value: Int64(ceil(1.0 / Double(frameRate) * 1_000_000_000.0)),
+                        timescale: 1_000_000_000
+                    ),
+                    iso: try LightMeterService.getIsoValue(
+                        ev: exposureValue,
+                        shutterSpeed: 1 / Float(frameRate),
+                        aperture: apertureValue
+                    )
+                )
+            }
+            catch {
+                print(error)
+            }
+        }
     }
     
     func didTapShutter() {
@@ -64,14 +119,19 @@ final class ContentViewModel: ObservableObject {
                     try await camera.stopObscuraRecorder()
                 } else {
                     guard let recorder = MidnightExpressRecorder(baseURL: URL.homeDirectory.appending(path: "Documents/Obscura/Videos"), delegate: self) else { return }
-                    let iso = try LightMeterService.getIsoValue(ev: exposureValue, shutterSpeed: 1 / 6, aperture: aperture)
-                    try camera.lockFrameRate(6)
-                    try await camera.lockExposure(shutterSpeed: .init(value: 166666667, timescale: 1000000000), iso: iso)
                     try await camera.start(obscuraRecorder: recorder)
                     try AVAudioSession.sharedInstance().setAllowHapticsAndSystemSoundsDuringRecording(true)
                 }
             } catch {
                 print(error)
+            }
+        }
+    }
+    
+    func didTapScreen(on position: CGPoint) {
+        Task {
+            do {
+                try camera.lockFocus(on: position)
             }
         }
     }
