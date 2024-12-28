@@ -34,11 +34,14 @@ struct ContentView: View {
                     .shadow(radius: 5)
                     .opacity(viewModel.isFocusUnlockable ? 1.0 : .zero)
                     .animation(.easeInOut, value: viewModel.isFocusUnlockable)
-                Text(viewModel.exposureState.text)
-                    .font(.headline)
-                    .foregroundStyle(viewModel.exposureState.color)
-                    .animation(.easeIn(duration: 0.1), value: viewModel.exposureState)
-                    .shadow(radius: 5)
+                Slider(
+                    value: .init(
+                        get: { viewModel.exposureBias },
+                        set: { viewModel.didChangeExposureBiasSlider(value: $0) }
+                    ),
+                    in: -2...2,
+                    step: 0.1
+                )
                 Slider(
                     value: .init(
                         get: { Float(viewModel.frameRate) },
@@ -67,22 +70,5 @@ struct ContentView: View {
         }
         .sensoryFeedback(.impact(weight: .light), trigger: viewModel.focusLockPoint)
         .sensoryFeedback(.impact(weight: .medium), trigger: viewModel.isFocusLocked) { $1 }
-    }
-}
-
-extension ExposureState {
-    var text: String {
-        switch self {
-        case .correct: return "Correct"
-        case .over: return "Over"
-        case .under: return "Under"
-        }
-    }
-    
-    var color: Color {
-        switch self {
-        case .correct: return .green
-        case .over, .under: return .red
-        }
     }
 }
