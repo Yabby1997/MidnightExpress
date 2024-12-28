@@ -47,7 +47,7 @@ let targets: [Target] = [
         platform: .iOS,
         product: .app,
         bundleId: "com.seunghun.midnightexp.dev",
-        deploymentTarget: .iOS(targetVersion: "16.0", devices: [.iphone]),
+        deploymentTarget: .iOS(targetVersion: "17.0", devices: [.iphone]),
         infoPlist: plist,
         sources: ["MidnightExp/Sources/**"],
         resources: [
@@ -62,7 +62,7 @@ let targets: [Target] = [
         platform: .iOS,
         product: .app,
         bundleId: "com.seunghun.midnightexp",
-        deploymentTarget: .iOS(targetVersion: "16.0", devices: [.iphone]),
+        deploymentTarget: .iOS(targetVersion: "17.0", devices: [.iphone]),
         infoPlist: plist,
         sources: ["MidnightExp/Sources/**"],
         resources: [
