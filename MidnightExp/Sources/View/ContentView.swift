@@ -50,25 +50,36 @@ struct ContentView: View {
                     in: 6...24,
                     step: 1
                 )
-                Button {
-                    viewModel.didTapShutter()
-                } label: {
-                    Text(viewModel.isCapturing ? "STOP" : "START")
-                        .font(.title2)
-                        .foregroundStyle(viewModel.isCapturing ? .red : .white)
-                        .shadow(radius: 5)
+                ZStack {
+                    HStack {
+                        Spacer()
+                        Button(action: viewModel.didTapToggle) {
+                            Image(systemName: "arrow.trianglehead.2.counterclockwise.rotate.90")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30)
+                                .foregroundStyle(.white)
+                        }
+                    }
+                    HStack {
+                        Spacer()
+                        Button(action: viewModel.didTapShutter) {
+                            Circle()
+                                .frame(width: 60, height: 60)
+                                .foregroundStyle(viewModel.isCapturing ? .red : .white)
+                        }
+                        Spacer()
+                    }
                 }
-                Spacer().frame(height: 50)
+                .shadow(radius: 5)
             }
             .padding(.horizontal, 20)
             if let focusLockPoint = viewModel.focusLockPoint {
                 LockIindicatorView(point: focusLockPoint, isHighlighted: viewModel.isFocusLocked)
             }
         }
-        .task {
-            await viewModel.setup()
-        }
-        .sensoryFeedback(.impact(weight: .light), trigger: viewModel.focusLockPoint)
+        .task { await viewModel.setup() }
+        .sensoryFeedback(.impact(weight: .light), trigger: viewModel.focusLockPoint) { $1 != nil }
         .sensoryFeedback(.impact(weight: .medium), trigger: viewModel.isFocusLocked) { $1 }
     }
 }

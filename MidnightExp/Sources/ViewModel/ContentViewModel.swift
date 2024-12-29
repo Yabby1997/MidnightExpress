@@ -28,7 +28,8 @@ final class ContentViewModel: ObservableObject {
     @Published var exposureOffset: Float = .zero
     @Published var isFocusLocked = false
     @Published var focusLockPoint: CGPoint?
-    var isFocusUnlockable: Bool { isFocusLocked || focusLockPoint != nil }
+    @Published var isFrontFacing = false
+    var isFocusUnlockable: Bool { (isFocusLocked || focusLockPoint != nil) && isFrontFacing == false }
     
     private var cancellables: Set<AnyCancellable> = []
     private var setFrameRateTask: Task<Void, Error>?
@@ -68,6 +69,10 @@ final class ContentViewModel: ObservableObject {
             .map { _ in nil }
             .receive(on: DispatchQueue.main)
             .assign(to: &$focusLockPoint)
+        
+        camera.isFrontFacing
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$isFrontFacing)
         
         camera.exposureValue
             .receive(on: DispatchQueue.main)
@@ -113,6 +118,10 @@ final class ContentViewModel: ObservableObject {
             try Task.checkCancellation()
             try await camera.setExposure(bias: value)
         }
+    }
+    
+    func didTapToggle() {
+        try? camera.switchCamera()
     }
     
     func didTapShutter() {
