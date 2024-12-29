@@ -29,6 +29,8 @@ final class ContentViewModel: ObservableObject {
     @Published var isFocusLocked = false
     @Published var focusLockPoint: CGPoint?
     @Published var isFrontFacing = false
+    @Published var zoomFactor: Float = 1
+    @Published var zoomOffset: Float = .zero
     var isFocusUnlockable: Bool { (isFocusLocked || focusLockPoint != nil) && isFrontFacing == false }
     
     private var cancellables: Set<AnyCancellable> = []
@@ -86,11 +88,32 @@ final class ContentViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$exposureBias)
         
+        camera.zoomFactor
+            .map { Float($0) }
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$zoomFactor)
+        
         Publishers.CombineLatest3($frameRate, camera.exposureValue, camera.aperture)
             .sink { [weak self] frameRate, exposureValue, apertureValue in
                 self?.setFrameRate(frameRate, exposureValue: exposureValue, apertureValue: apertureValue)
             }
             .store(in: &cancellables)
+        
+        Publishers.CombineLatest(
+            Timer.publish(every: 0.01, on: .main, in: .default).autoconnect(),
+            $zoomOffset
+        )
+        .map { $0.1 }
+        .filter { $0 != .zero }
+        .compactMap { [weak self] offset -> CGFloat? in
+            guard let self else { return nil }
+            return min(5, CGFloat(zoomFactor + offset / 100))
+            
+        }
+        .sink { [weak self] zoomFactor in
+            try? self?.camera.zoom(factor: zoomFactor, animated: false)
+        }
+        .store(in: &cancellables)
     }
     
     private func setFrameRate(_ frameRate: Int, exposureValue: Float, apertureValue: Float) {

@@ -34,6 +34,7 @@ struct ContentView: View {
                     .shadow(radius: 5)
                     .opacity(viewModel.isFocusUnlockable ? 1.0 : .zero)
                     .animation(.easeInOut, value: viewModel.isFocusUnlockable)
+                OffsetSlider(offset: $viewModel.zoomOffset)
                 Slider(
                     value: .init(
                         get: { viewModel.exposureBias },
