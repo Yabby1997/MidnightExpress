@@ -19,6 +19,7 @@ final class ContentViewModel: ObservableObject {
     var previewLayer: CALayer { camera.previewLayer }
     let feedback = UIImpactFeedbackGenerator(style: .soft)
     
+    @Published var shutterAngle: Int = 360
     @Published var isCapturing: Bool = false
     @Published var shutterSpeed: Float = .zero
     @Published var iso: Float = .zero
@@ -117,20 +118,14 @@ final class ContentViewModel: ObservableObject {
     }
     
     private func setFrameRate(_ frameRate: Int, exposureValue: Float, apertureValue: Float) {
+        let targetShutterSpeed = 1 / Float(frameRate) * Float(shutterAngle) / 360.0
         setFrameRateTask?.cancel()
         setFrameRateTask = Task {
             try camera.lockFrameRate(Int32(frameRate))
             try Task.checkCancellation()
             try await camera.lockExposure(
-                shutterSpeed: .init(
-                    value: Int64(ceil(1.0 / Double(frameRate) * 1_000_000_000.0)),
-                    timescale: 1_000_000_000
-                ),
-                iso: try LightMeterService.getIsoValue(
-                    ev: exposureValue,
-                    shutterSpeed: 1 / Float(frameRate),
-                    aperture: apertureValue
-                )
+                shutterSpeed: .init(value: Int64(ceil(targetShutterSpeed * 1_000_000_000.0)), timescale: 1_000_000_000),
+                iso: try LightMeterService.getIsoValue(ev: exposureValue, shutterSpeed: targetShutterSpeed, aperture: apertureValue)
             )
         }
     }
