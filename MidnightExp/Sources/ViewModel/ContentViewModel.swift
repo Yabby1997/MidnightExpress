@@ -130,7 +130,8 @@ final class ContentViewModel: ObservableObject {
         }
     }
     
-    func didChangeExposureBiasSlider(value: Float) {
+    // TODO: Fix bidirectional binding problem with exposure bias
+    func didChangeExposureBias(value: Float) {
         setExposureBiasTask?.cancel()
         setExposureBiasTask = Task {
             try Task.checkCancellation()
@@ -142,15 +143,23 @@ final class ContentViewModel: ObservableObject {
         try? camera.switchCamera()
     }
     
+    // TODO: Remove original video after saving it to photo library
     func didTapShutter() {
         Task {
             do {
-                if isCapturing {
-                    try await camera.stopObscuraRecorder()
+                if isCapturing, let result = try await camera.stopRecordVideo(), let videoPath = result.videoPath {
+                    let url = URL.homeDirectory.appending(path: videoPath)
+                    PHPhotoLibrary.requestAuthorization { status in
+                        guard status == .authorized else {
+                            print("Photo library access not granted")
+                            return
+                        }
+                        PHPhotoLibrary.shared().performChanges{
+                            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
+                        }
+                    }
                 } else {
-                    guard let recorder = MidnightExpressRecorder(baseURL: URL.homeDirectory.appending(path: "Documents/Obscura/Videos"), delegate: self) else { return }
-                    try await camera.start(obscuraRecorder: recorder)
-                    try AVAudioSession.sharedInstance().setAllowHapticsAndSystemSoundsDuringRecording(true)
+                    try camera.startRecordVideo()
                 }
             } catch {
                 print(error)
@@ -169,28 +178,6 @@ final class ContentViewModel: ObservableObject {
     func didTapUnlock() {
         Task {
             try camera.unlockFocus()
-        }
-    }
-}
-
-extension ContentViewModel: MidnightExpressRecorderDelegate {
-    nonisolated func didCaptureFrame(_ midnightExpressRecorder: MidnightExpressRecorder) {
-        Task { @MainActor in
-            feedback.impactOccurred()
-        }
-    }
-    
-    nonisolated func midnightExpressRecorder(_ midnightExpressRecorder: MidnightExpressRecorder, didSaveOutputAt url: URL) {
-        Task { @MainActor in
-            PHPhotoLibrary.requestAuthorization { status in
-                guard status == .authorized else {
-                    print("Photo library access not granted")
-                    return
-                }
-                PHPhotoLibrary.shared().performChanges{
-                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
-                }
-            }
         }
     }
 }

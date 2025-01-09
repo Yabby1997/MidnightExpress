@@ -30,6 +30,7 @@ let releasedDependencies: [TargetDependency] = [
 let devDependencies: [TargetDependency] = [
     .project(target: "Obscura", path: "../../Modules/Obscura"),
     .project(target: "LightMeter", path: "../../Modules/LightMeter"),
+    .project(target: "HaebitUI", path: "../../Modules/HaebitUI"),
 ]
 
 let settings: Settings = .settings(

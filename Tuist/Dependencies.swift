@@ -12,6 +12,7 @@ let dependencies = Dependencies(
         [
             .remote(url: "https://github.com/Yabby1997/LightMeter", requirement: .exact("0.2.0")),
             .remote(url: "https://github.com/Yabby1997/Obscura", requirement: .exact("0.7.0")),
+            .remote(url: "git@github.com:Yabby1997/HaebitUI.git", requirement: .exact("0.4.0")),
         ]
     ),
     platforms: [.iOS]
