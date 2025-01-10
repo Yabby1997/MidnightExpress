@@ -13,16 +13,24 @@ import Obscura
 import Photos
 import UIKit
 
+enum ControlType: CaseIterable, Hashable {
+    case frameRate
+    case shutterAngle
+    case exposure
+    case zoom
+}
+
 @MainActor
 final class ContentViewModel: ObservableObject {
     let camera = ObscuraCamera()
     var previewLayer: CALayer { camera.previewLayer }
-    let feedback = UIImpactFeedbackGenerator(style: .soft)
     
+    @Published var controlType: ControlType = .frameRate
     @Published var shutterAngle: Int = 360
     @Published var isCapturing: Bool = false
     @Published var shutterSpeed: Float = .zero
     @Published var iso: Float = .zero
+    @Published var targetExposureValue: Float = .zero
     @Published var exposureValue: Float = .zero
     @Published var exposureBias: Float = .zero
     @Published var frameRate: Int = 12
@@ -85,18 +93,14 @@ final class ContentViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$exposureOffset)
         
-        camera.exposureBias
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$exposureBias)
-        
         camera.zoomFactor
             .map { Float($0) }
             .receive(on: DispatchQueue.main)
             .assign(to: &$zoomFactor)
         
-        Publishers.CombineLatest3($frameRate, camera.exposureValue, camera.aperture)
-            .sink { [weak self] frameRate, exposureValue, apertureValue in
-                self?.setFrameRate(frameRate, exposureValue: exposureValue, apertureValue: apertureValue)
+        Publishers.CombineLatest4($frameRate, $exposureBias, camera.exposureValue, camera.aperture)
+            .sink { [weak self] frameRate, exposureBias, exposureValue, apertureValue in
+                self?.setFrameRate(frameRate, exposureValue: exposureValue - exposureBias, apertureValue: apertureValue)
             }
             .store(in: &cancellables)
         
@@ -127,15 +131,6 @@ final class ContentViewModel: ObservableObject {
                 shutterSpeed: .init(value: Int64(ceil(targetShutterSpeed * 1_000_000_000.0)), timescale: 1_000_000_000),
                 iso: try LightMeterService.getIsoValue(ev: exposureValue, shutterSpeed: targetShutterSpeed, aperture: apertureValue)
             )
-        }
-    }
-    
-    // TODO: Fix bidirectional binding problem with exposure bias
-    func didChangeExposureBias(value: Float) {
-        setExposureBiasTask?.cancel()
-        setExposureBiasTask = Task {
-            try Task.checkCancellation()
-            try await camera.setExposure(bias: value)
         }
     }
     

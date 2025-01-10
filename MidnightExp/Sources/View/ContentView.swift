@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import HaebitUI
 
 @MainActor
 struct ContentView: View {
@@ -82,7 +83,7 @@ struct ContentView: View {
                         }
                         .opacity(viewModel.controlType == .shutterAngle ? 1.0 : .zero)
                         HaebitApertureRing(
-                            selection: .init(get: { viewModel.exposureBias }, set: { viewModel.didChangeExposureBias(value: $0) }),
+                            selection: $viewModel.exposureBias,
                             entries: .constant([-2.0, -1.7, -1.3, -1.0, -0.7, -0.3, 0, 0.3, 0.7, 1.0, 1.3, 1.7, 2.0]),
                             feedbackStyle: .constant(.medium),
                             isMute: .constant(true)
