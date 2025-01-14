@@ -8,6 +8,7 @@
 
 import Combine
 import CoreMedia
+import CoreMotion
 import LightMeter
 import Obscura
 import Photos
@@ -20,10 +21,21 @@ enum ControlType: CaseIterable, Hashable {
     case zoom
 }
 
+enum Level {
+    case portrait(angle: Double)
+    case landscapeRight(angle: Double)
+    case landscapeLeft(angle: Double)
+    case floor(roll: Double, pitch: Double)
+}
+
 @MainActor
 final class ContentViewModel: ObservableObject {
     let camera = ObscuraCamera()
     var previewLayer: CALayer { camera.previewLayer }
+    
+    private let motionManager = CMMotionManager()
+    private let queue = OperationQueue()
+    @Published var level: Level = .portrait(angle: .zero)
     
     @Published var controlType: ControlType = .frameRate
     @Published var shutterAngle: Int = 360
@@ -46,7 +58,33 @@ final class ContentViewModel: ObservableObject {
     private var setFrameRateTask: Task<Void, Error>?
     private var setExposureBiasTask: Task<Void, Error>?
 
+    private func setLevel(_ level: Level) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.level = level
+        }
+    }
+    
     func setup() async {
+        motionManager.startDeviceMotionUpdates(to: queue) { [weak self] data, error in
+            guard let self, let data else { return }
+            let roll = (data.attitude.roll * (180.0 / .pi)).normalizedDegrees
+            let pitch = (data.attitude.pitch * (180.0 / .pi)).normalizedDegrees
+            let rotation = ((atan2(data.gravity.x, data.gravity.y) - .pi) * (180.0 / .pi)).normalizedDegrees
+            
+            if 45 >= abs(roll), 45 >= abs(pitch) {
+                setLevel(.floor(roll: roll, pitch: pitch))
+            } else {
+                if rotation > -45, rotation < 45 {
+                    setLevel(.portrait(angle: rotation))
+                } else if rotation > 45 {
+                    setLevel(.landscapeRight(angle: rotation))
+                } else if rotation < -45 {
+                    setLevel(.landscapeLeft(angle: rotation))
+                }
+            }
+        }
+        
         do {
             try await camera.setup()
             try await camera.requestMicAuthorization()
@@ -174,5 +212,12 @@ final class ContentViewModel: ObservableObject {
         Task {
             try camera.unlockFocus()
         }
+    }
+}
+
+extension Double {
+    fileprivate var normalizedDegrees: Double {
+        let remainder = truncatingRemainder(dividingBy: 360)
+        return remainder > 180 ? remainder - 360 : (remainder < -180 ? remainder + 360 : remainder)
     }
 }

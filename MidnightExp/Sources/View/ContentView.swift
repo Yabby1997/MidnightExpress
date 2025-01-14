@@ -20,6 +20,7 @@ struct ContentView: View {
             if let focusLockPoint = viewModel.focusLockPoint {
                 LockIindicatorView(point: focusLockPoint, isHighlighted: viewModel.isFocusLocked)
             }
+            LevelIndicator(level: $viewModel.level)
             VStack() {
                 Spacer()
                 VStack(spacing: 12) {
