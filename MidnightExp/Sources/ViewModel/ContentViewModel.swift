@@ -22,9 +22,17 @@ enum ControlType: CaseIterable, Hashable {
 
 enum Level {
     case portrait(angle: Double)
+    case portraitUpsideDown(angle: Double)
     case landscapeRight(angle: Double)
     case landscapeLeft(angle: Double)
     case floor(roll: Double, pitch: Double)
+}
+
+enum Orientation: Equatable {
+    case portrait
+    case portraitUpsideDown
+    case landscapeRight
+    case landscapeLeft
 }
 
 @MainActor
@@ -35,6 +43,7 @@ final class ContentViewModel: ObservableObject {
     private let motionManager = CMMotionManager()
     private let queue = OperationQueue()
     @Published var level: Level = .portrait(angle: .zero)
+    @Published var orientation: Orientation = .portrait
     
     @Published var controlType: ControlType = .frameRate
     @Published var shutterAngle: Int = 360
@@ -64,6 +73,13 @@ final class ContentViewModel: ObservableObject {
         }
     }
     
+    private func setOrientation(_ orientation: Orientation) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self, self.orientation != orientation else { return }
+            self.orientation = orientation
+        }
+    }
+    
     func setup() async {
         motionManager.startDeviceMotionUpdates(to: queue) { [weak self] data, error in
             guard let self, let data else { return }
@@ -74,13 +90,26 @@ final class ContentViewModel: ObservableObject {
             if 45 >= abs(roll), 45 >= abs(pitch) {
                 setLevel(.floor(roll: roll, pitch: pitch))
             } else {
-                if rotation > -45, rotation < 45 {
+                if (-45..<45) ~= rotation {
                     setLevel(.portrait(angle: rotation))
-                } else if rotation > 45 {
+                } else if (45..<135) ~= rotation {
                     setLevel(.landscapeRight(angle: rotation))
-                } else if rotation < -45 {
+                } else if (-135 ..< -45) ~= rotation {
                     setLevel(.landscapeLeft(angle: rotation))
+                } else {
+                    setLevel(.portraitUpsideDown(angle: rotation))
                 }
+            }
+            
+            guard 45 < abs(roll) || 45 < abs(pitch) else { return }
+            if (-45..<45) ~= rotation {
+                setOrientation(.portrait)
+            } else if (45..<135) ~= rotation {
+                setOrientation(.landscapeRight)
+            } else if (-135 ..< -45) ~= rotation {
+                setOrientation(.landscapeLeft)
+            } else {
+                setOrientation(.portraitUpsideDown)
             }
         }
         

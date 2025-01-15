@@ -14,6 +14,8 @@ struct LevelIndicator: View {
     var body: some View {
         switch level {
         case let .portrait(angle): HorizonLevelIndicator(originalAngle: .degrees(.zero), actualAngle: .degrees(angle))
+        // TODO: Fix rolling indicator for upside down
+        case let .portraitUpsideDown(angle): HorizonLevelIndicator(originalAngle: .degrees(180), actualAngle: .degrees(angle))
         case let .landscapeRight(angle): HorizonLevelIndicator(originalAngle: .degrees(90), actualAngle: .degrees(angle))
         case let .landscapeLeft(angle): HorizonLevelIndicator(originalAngle: .degrees(-90), actualAngle: .degrees(angle))
         case let .floor(roll, pitch): FloorLevelIndicator(roll: .degrees(roll), pitch: .degrees(pitch))

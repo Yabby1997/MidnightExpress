@@ -29,6 +29,8 @@ struct ContentView: View {
                         .animation(.easeIn, value: viewModel.isFocusUnlockable)
                         .foregroundStyle(viewModel.isFocusUnlockable ? .yellow : .gray)
                         .onTapGesture { viewModel.didTapUnlock() }
+                        .rotationEffect(viewModel.orientation.angle)
+                        .animation(.easeInOut, value: viewModel.orientation)
                     HStack(spacing: 20) {
                         Text("\(viewModel.frameRate)fps")
                             .font(.system(size: 22, weight: .bold, design: .rounded))
@@ -36,24 +38,32 @@ struct ContentView: View {
                             .foregroundStyle(viewModel.controlType == .frameRate ? .white : .gray)
                             .onTapGesture { viewModel.controlType = .frameRate }
                             .frame(width: 60)
+                            .rotationEffect(viewModel.orientation.angle)
+                            .animation(.easeInOut, value: viewModel.orientation)
                         Text("\(viewModel.shutterAngle)°")
                             .font(.system(size: 22, weight: .bold, design: .rounded))
                             .animation(.easeIn, value: viewModel.shutterAngle)
                             .foregroundStyle(viewModel.controlType == .shutterAngle ? .white : .gray)
                             .onTapGesture { viewModel.controlType = .shutterAngle }
                             .frame(width: 60)
+                            .rotationEffect(viewModel.orientation.angle)
+                            .animation(.easeInOut, value: viewModel.orientation)
                         Text(String(format: "%+0.1f", viewModel.exposureBias))
                             .font(.system(size: 22, weight: .bold, design: .rounded))
                             .animation(.easeIn, value: viewModel.exposureBias)
                             .foregroundStyle(viewModel.controlType == .exposure ? .white : .gray)
                             .onTapGesture { viewModel.controlType = .exposure }
                             .frame(width: 60)
+                            .rotationEffect(viewModel.orientation.angle)
+                            .animation(.easeInOut, value: viewModel.orientation)
                         Text("x" + String(format: "%.1f", viewModel.zoomFactor))
                             .font(.system(size: 22, weight: .bold, design: .rounded))
                             .animation(.easeIn, value: viewModel.zoomFactor)
                             .foregroundStyle(viewModel.controlType == .zoom ? .white : .gray)
                             .onTapGesture { viewModel.controlType = .zoom }
                             .frame(width: 60)
+                            .rotationEffect(viewModel.orientation.angle)
+                            .animation(.easeInOut, value: viewModel.orientation)
                     }
                     .animation(.easeInOut, value: viewModel.controlType)
                     .contentTransition(.numericText())
@@ -141,5 +151,17 @@ struct ContentView: View {
         .task { await viewModel.setup() }
         .sensoryFeedback(.impact(weight: .light), trigger: viewModel.focusLockPoint) { $1 != nil }
         .sensoryFeedback(.impact(weight: .medium), trigger: viewModel.isFocusLocked) { $1 }
+        .sensoryFeedback(.impact(weight: .heavy), trigger: viewModel.isCapturing)
+    }
+}
+
+extension Orientation {
+    var angle: Angle {
+        switch self {
+        case .portrait: return .degrees(.zero)
+        case .portraitUpsideDown: return .degrees(180)
+        case .landscapeLeft: return .degrees(-90)
+        case .landscapeRight: return .degrees(90)
+        }
     }
 }
