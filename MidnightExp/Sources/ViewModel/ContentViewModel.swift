@@ -183,7 +183,7 @@ final class ContentViewModel: ObservableObject {
                     try await PhotoLibrary.save(video: url)
                     try FileManager.default.removeItem(at: url)
                 } else {
-                    try camera.startRecordVideo()
+                    try camera.startRecordVideo(allowHapticsAndSystemSounds: true)
                 }
             } catch {
                 print(error)
