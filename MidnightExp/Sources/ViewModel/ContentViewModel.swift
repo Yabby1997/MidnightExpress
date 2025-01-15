@@ -46,7 +46,7 @@ final class ContentViewModel: ObservableObject {
     @Published var orientation: Orientation = .portrait
     
     @Published var controlType: ControlType = .frameRate
-    @Published var shutterAngle: Int = 360
+    @Published var shutterAngle: Int = 180
     @Published var isCapturing: Bool = false
     @Published var shutterSpeed: Float = .zero
     @Published var iso: Float = .zero

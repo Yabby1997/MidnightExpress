@@ -116,8 +116,11 @@ struct ContentView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 30)
                                     .foregroundStyle(.white)
+                                    .rotationEffect(viewModel.orientation.angle)
+                                    .animation(.easeInOut, value: viewModel.orientation)
                             }
                         }
+                        .padding(.horizontal, 20)
                         HStack {
                             Spacer()
                             Button(action: viewModel.didTapShutter) {
