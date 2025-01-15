@@ -11,7 +11,6 @@ import CoreMedia
 import CoreMotion
 import LightMeter
 import Obscura
-import Photos
 import UIKit
 
 enum ControlType: CaseIterable, Hashable {
@@ -176,21 +175,13 @@ final class ContentViewModel: ObservableObject {
         try? camera.switchCamera()
     }
     
-    // TODO: Remove original video after saving it to photo library
     func didTapShutter() {
         Task {
             do {
                 if isCapturing, let result = try await camera.stopRecordVideo(), let videoPath = result.videoPath {
                     let url = URL.homeDirectory.appending(path: videoPath)
-                    PHPhotoLibrary.requestAuthorization { status in
-                        guard status == .authorized else {
-                            print("Photo library access not granted")
-                            return
-                        }
-                        PHPhotoLibrary.shared().performChanges{
-                            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
-                        }
-                    }
+                    try await PhotoLibrary.save(video: url)
+                    try FileManager.default.removeItem(at: url)
                 } else {
                     try camera.startRecordVideo()
                 }
