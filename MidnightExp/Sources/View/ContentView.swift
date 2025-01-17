@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import HaebitUI
 
 @MainActor
 struct ContentView: View {
@@ -67,46 +66,14 @@ struct ContentView: View {
                     }
                     .animation(.easeInOut, value: viewModel.controlType)
                     .contentTransition(.numericText())
-                    ZStack {
-                        HaebitApertureRing(
-                            selection: $viewModel.frameRate,
-                            entries: .constant([4, 6, 8, 10, 12]),
-                            feedbackStyle: .constant(.medium),
-                            isMute: .constant(true)
-                        ) { value in
-                            Text("\(value)")
-                                .font(.system(size: 16, weight: .semibold, design: .monospaced))
-                        }
-                        .opacity(viewModel.controlType == .frameRate ? 1.0 : .zero)
-                        .overlay {
-                            HStack {
-                                Color.clear.blur(radius: 10)
-                            }
-                        }
-                        HaebitApertureRing(
-                            selection: $viewModel.shutterAngle,
-                            entries: .constant([360, 315, 270, 225, 180]),
-                            feedbackStyle: .constant(.medium),
-                            isMute: .constant(true)
-                        ) { value in
-                            Text("\(value)°")
-                                .font(.system(size: 16, weight: .semibold, design: .monospaced))
-                        }
-                        .opacity(viewModel.controlType == .shutterAngle ? 1.0 : .zero)
-                        HaebitApertureRing(
-                            selection: $viewModel.exposureBias,
-                            entries: .constant([-2.0, -1.7, -1.3, -1.0, -0.7, -0.3, 0, 0.3, 0.7, 1.0, 1.3, 1.7, 2.0]),
-                            feedbackStyle: .constant(.medium),
-                            isMute: .constant(true)
-                        ) { value in
-                            Text(String(format: "%+0.1f", value))
-                                .font(.system(size: 16, weight: .semibold, design: .monospaced))
-                        }
-                        .opacity(viewModel.controlType == .exposure ? 1.0 : .zero)
-                        OffsetSlider(offset: $viewModel.zoomOffset)
-                            .opacity(viewModel.controlType == .zoom ? 1.0 : .zero)
-                    }
-                    .animation(.easeIn, value: viewModel.controlType)
+                    DialControlView(
+                        orientation: $viewModel.orientation,
+                        controlType: $viewModel.controlType,
+                        frameRate: $viewModel.frameRate,
+                        shutterAngle: $viewModel.shutterAngle,
+                        exposureBias: $viewModel.exposureBias,
+                        zoomOffset: $viewModel.zoomOffset
+                    )
                     ZStack {
                         HStack {
                             Spacer()
@@ -120,7 +87,6 @@ struct ContentView: View {
                                     .animation(.easeInOut, value: viewModel.orientation)
                             }
                         }
-                        .padding(.horizontal, 20)
                         HStack {
                             Spacer()
                             Button(action: viewModel.didTapShutter) {
@@ -131,6 +97,8 @@ struct ContentView: View {
                             Spacer()
                         }
                     }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
                 }
                 .background {
                     Color.clear
@@ -152,6 +120,8 @@ struct ContentView: View {
             .shadow(radius: 5)
         }
         .task { await viewModel.setup() }
+        .persistentSystemOverlays(.hidden)
+        .statusBar(hidden: true)
         .sensoryFeedback(.impact(weight: .light), trigger: viewModel.focusLockPoint) { $1 != nil }
         .sensoryFeedback(.impact(weight: .medium), trigger: viewModel.isFocusLocked) { $1 }
         .sensoryFeedback(.impact(weight: .heavy), trigger: viewModel.isCapturing)

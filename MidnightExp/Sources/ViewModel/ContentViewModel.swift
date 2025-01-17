@@ -53,7 +53,7 @@ final class ContentViewModel: ObservableObject {
     @Published var targetExposureValue: Float = .zero
     @Published var exposureValue: Float = .zero
     @Published var exposureBias: Float = .zero
-    @Published var frameRate: Int = 12
+    @Published var frameRate: Int = 8
     @Published var exposureOffset: Float = .zero
     @Published var isFocusLocked = false
     @Published var focusLockPoint: CGPoint?
