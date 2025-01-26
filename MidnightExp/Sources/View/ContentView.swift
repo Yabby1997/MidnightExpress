@@ -66,14 +66,7 @@ struct ContentView: View {
                     }
                     .animation(.easeInOut, value: viewModel.controlType)
                     .contentTransition(.numericText())
-                    DialControlView(
-                        orientation: $viewModel.orientation,
-                        controlType: $viewModel.controlType,
-                        frameRate: $viewModel.frameRate,
-                        shutterAngle: $viewModel.shutterAngle,
-                        exposureBias: $viewModel.exposureBias,
-                        zoomOffset: $viewModel.zoomOffset
-                    )
+                    DialControlView(viewModel: viewModel)
                     ZStack {
                         HStack {
                             Spacer()
