@@ -204,7 +204,10 @@ final class ContentViewModel: ObservableObject {
                     try await PhotoLibrary.save(video: url)
                     try FileManager.default.removeItem(at: url)
                 } else {
-                    try camera.startRecordVideo(allowHapticsAndSystemSounds: true)
+                    try camera.startRecordVideo(
+                        orientation: orientation.obscuraCameraOrientation,
+                        allowHapticsAndSystemSounds: true
+                    )
                 }
             } catch {
                 print(error)
@@ -223,6 +226,17 @@ final class ContentViewModel: ObservableObject {
     func didTapUnlock() {
         Task {
             try camera.unlockFocus()
+        }
+    }
+}
+
+extension Orientation {
+    var obscuraCameraOrientation: ObscuraCamera.Orientation {
+        switch self {
+        case .portrait: return .portrait
+        case .portraitUpsideDown: return .portraitUpsideDown
+        case .landscapeLeft: return .landscapeLeft
+        case .landscapeRight: return .landscapeRight
         }
     }
 }
