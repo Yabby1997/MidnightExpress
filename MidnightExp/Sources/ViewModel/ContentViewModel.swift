@@ -6,8 +6,7 @@
 //  Copyright © 2024 seunghun. All rights reserved.
 //
 
-import Combine
-import CoreMedia
+@preconcurrency import Combine
 import CoreMotion
 import LightMeter
 import Obscura
@@ -40,8 +39,6 @@ final class ContentViewModel: ObservableObject {
     let camera = ObscuraCamera()
     var previewLayer: CALayer { camera.previewLayer }
     
-    private let motionManager = CMMotionManager()
-    private let queue = OperationQueue()
     @Published var level: Level = .portrait(angle: .zero)
     @Published var orientation: Orientation = .portrait
     
@@ -65,54 +62,8 @@ final class ContentViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     private var setFrameRateTask: Task<Void, Error>?
     private var setExposureBiasTask: Task<Void, Error>?
-
-    private func setLevel(_ level: Level) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            self.level = level
-        }
-    }
-    
-    private func setOrientation(_ orientation: Orientation) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self, self.orientation != orientation else { return }
-            self.orientation = orientation
-        }
-    }
     
     func setup() async {
-        motionManager.startDeviceMotionUpdates(to: queue) { [weak self] data, error in
-            guard let self, let data else { return }
-            let roll = (data.attitude.roll * (180.0 / .pi)).normalizedDegrees
-            let pitch = (data.attitude.pitch * (180.0 / .pi)).normalizedDegrees
-            let rotation = ((atan2(data.gravity.x, data.gravity.y) - .pi) * (180.0 / .pi)).normalizedDegrees
-            
-            if 45 >= abs(roll), 45 >= abs(pitch) {
-                setLevel(.floor(roll: roll, pitch: pitch))
-            } else {
-                if (-45..<45) ~= rotation {
-                    setLevel(.portrait(angle: rotation))
-                } else if (45..<135) ~= rotation {
-                    setLevel(.landscapeRight(angle: rotation))
-                } else if (-135 ..< -45) ~= rotation {
-                    setLevel(.landscapeLeft(angle: rotation))
-                } else {
-                    setLevel(.portraitUpsideDown(angle: rotation))
-                }
-            }
-            
-            guard 45 < abs(roll) || 45 < abs(pitch) else { return }
-            if (-45..<45) ~= rotation {
-                setOrientation(.portrait)
-            } else if (45..<135) ~= rotation {
-                setOrientation(.landscapeRight)
-            } else if (-135 ..< -45) ~= rotation {
-                setOrientation(.landscapeLeft)
-            } else {
-                setOrientation(.portraitUpsideDown)
-            }
-        }
-        
         do {
             try await camera.setup()
             try await camera.requestMicAuthorization()
@@ -185,6 +136,47 @@ final class ContentViewModel: ObservableObject {
             try? self?.camera.zoom(factor: zoomFactor, animated: false)
         }
         .store(in: &cancellables)
+        
+        MotionManager.shared.motionPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] motion in
+                self?.updateOrientationIfNeeded(motion)
+                self?.updateLevel(motion)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func updateLevel(_ motion: Motion) {
+        let level: Level
+        if 45 >= abs(motion.roll), 45 >= abs(motion.pitch) {
+            level = .floor(roll: motion.roll, pitch: motion.pitch)
+        } else {
+            if (-45..<45) ~= motion.rotation {
+                level = .portrait(angle: motion.rotation)
+            } else if (45..<135) ~= motion.rotation {
+                level = .landscapeRight(angle: motion.rotation)
+            } else if (-135 ..< -45) ~= motion.rotation {
+                level = .landscapeLeft(angle: motion.rotation)
+            } else {
+                level = .portraitUpsideDown(angle: motion.rotation)
+            }
+        }
+        self.level = level
+    }
+    
+    private func updateOrientationIfNeeded(_ motion: Motion) {
+        guard isCapturing == false, 45 < abs(motion.roll) || 45 < abs(motion.pitch) else { return }
+        let orientation: Orientation
+        if (-45..<45) ~= motion.rotation {
+            orientation = .portrait
+        } else if (45..<135) ~= motion.rotation {
+            orientation = .landscapeRight
+        } else if (-135 ..< -45) ~= motion.rotation {
+            orientation = .landscapeLeft
+        } else {
+            orientation = .portraitUpsideDown
+        }
+        self.orientation = orientation
     }
     
     private func setFrameRate(_ frameRate: Int, exposureValue: Float, apertureValue: Float) {
@@ -232,12 +224,5 @@ final class ContentViewModel: ObservableObject {
         Task {
             try camera.unlockFocus()
         }
-    }
-}
-
-extension Double {
-    fileprivate var normalizedDegrees: Double {
-        let remainder = truncatingRemainder(dividingBy: 360)
-        return remainder > 180 ? remainder - 360 : (remainder < -180 ? remainder + 360 : remainder)
     }
 }
