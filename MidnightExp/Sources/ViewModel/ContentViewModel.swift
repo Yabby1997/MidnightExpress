@@ -26,6 +26,12 @@ enum Level {
     case landscapeLeft(angle: Double)
     case floor(roll: Double, pitch: Double)
     case sky(roll: Double, pitch: Double)
+    
+    var isSurface: Bool {
+        if case .floor = self { return true }
+        if case .sky = self { return true }
+        return false
+    }
 }
 
 enum Orientation: Equatable {
@@ -145,8 +151,8 @@ final class ContentViewModel: ObservableObject {
         MotionManager.shared.motionPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] motion in
-                self?.updateOrientationIfNeeded(motion)
                 self?.updateLevel(motion)
+                self?.updateOrientationIfNeeded(motion)
             }
             .store(in: &cancellables)
     }
@@ -172,7 +178,7 @@ final class ContentViewModel: ObservableObject {
     }
     
     private func updateOrientationIfNeeded(_ motion: Motion) {
-        guard isCapturing == false, 45 < abs(motion.roll) || 45 < abs(motion.pitch) else { return }
+        guard isCapturing == false, level.isSurface == false else { return }
         let orientation: Orientation
         if (-45..<45) ~= motion.rotation {
             orientation = .portrait
