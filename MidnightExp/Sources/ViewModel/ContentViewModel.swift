@@ -33,6 +33,10 @@ enum Orientation: Equatable {
     case portraitUpsideDown
     case landscapeRight
     case landscapeLeft
+    
+    var isLandscape: Bool {
+        self == .landscapeLeft || self == .landscapeRight
+    }
 }
 
 @MainActor

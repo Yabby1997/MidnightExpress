@@ -22,75 +22,15 @@ struct ContentView: View {
             LevelIndicator(level: $viewModel.level)
             VStack() {
                 Spacer()
-                VStack(spacing: 12) {
-                    Text(viewModel.isFocusUnlockable ? "AF-L" : "AF")
-                        .font(.system(size: 18, weight: .bold, design: .rounded))
-                        .animation(.easeIn, value: viewModel.isFocusUnlockable)
-                        .foregroundStyle(viewModel.isFocusUnlockable ? .yellow : .gray)
-                        .onTapGesture { viewModel.didTapUnlock() }
-                        .rotationEffect(viewModel.orientation.angle)
-                        .animation(.easeInOut, value: viewModel.orientation)
-                    HStack(spacing: 20) {
-                        Text("\(viewModel.frameRate)fps")
-                            .font(.system(size: 22, weight: .bold, design: .rounded))
-                            .animation(.easeIn, value: viewModel.frameRate)
-                            .foregroundStyle(viewModel.controlType == .frameRate ? .white : .gray)
-                            .onTapGesture { viewModel.controlType = .frameRate }
-                            .frame(width: 60)
-                            .rotationEffect(viewModel.orientation.angle)
-                            .animation(.easeInOut, value: viewModel.orientation)
-                        Text("\(viewModel.shutterAngle)°")
-                            .font(.system(size: 22, weight: .bold, design: .rounded))
-                            .animation(.easeIn, value: viewModel.shutterAngle)
-                            .foregroundStyle(viewModel.controlType == .shutterAngle ? .white : .gray)
-                            .onTapGesture { viewModel.controlType = .shutterAngle }
-                            .frame(width: 60)
-                            .rotationEffect(viewModel.orientation.angle)
-                            .animation(.easeInOut, value: viewModel.orientation)
-                        Text(String(format: "%+0.1f", viewModel.exposureBias))
-                            .font(.system(size: 22, weight: .bold, design: .rounded))
-                            .animation(.easeIn, value: viewModel.exposureBias)
-                            .foregroundStyle(viewModel.controlType == .exposure ? .white : .gray)
-                            .onTapGesture { viewModel.controlType = .exposure }
-                            .frame(width: 60)
-                            .rotationEffect(viewModel.orientation.angle)
-                            .animation(.easeInOut, value: viewModel.orientation)
-                        Text("x" + String(format: "%.1f", viewModel.zoomFactor))
-                            .font(.system(size: 22, weight: .bold, design: .rounded))
-                            .animation(.easeIn, value: viewModel.zoomFactor)
-                            .foregroundStyle(viewModel.controlType == .zoom ? .white : .gray)
-                            .onTapGesture { viewModel.controlType = .zoom }
-                            .frame(width: 60)
-                            .rotationEffect(viewModel.orientation.angle)
-                            .animation(.easeInOut, value: viewModel.orientation)
-                    }
-                    .animation(.easeInOut, value: viewModel.controlType)
-                    .contentTransition(.numericText())
+                VStack {
+                    ControlTypeView(viewModel: viewModel)
                     DialControlView(viewModel: viewModel)
                     ZStack {
-                        HStack {
-                            Spacer()
-                            Button(action: viewModel.didTapToggle) {
-                                Image(systemName: "arrow.trianglehead.2.counterclockwise.rotate.90")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 30)
-                                    .foregroundStyle(.white)
-                                    .rotationEffect(viewModel.orientation.angle)
-                                    .animation(.easeInOut, value: viewModel.orientation)
-                            }
-                        }
-                        HStack {
-                            Spacer()
-                            Button(action: viewModel.didTapShutter) {
-                                Circle()
-                                    .frame(width: 60, height: 60)
-                                    .foregroundStyle(viewModel.isCapturing ? .red : .white)
-                            }
-                            Spacer()
-                        }
+                        ShutterButton(viewModel: viewModel)
+                        FlipButton(viewModel: viewModel)
+                        AFLButton(viewModel: viewModel)
                     }
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 40)
                     .padding(.bottom, 20)
                 }
                 .background {

@@ -14,15 +14,9 @@ struct DialView<ViewModel: DialControlViewModel>: View {
     
     var body: some View {
         Text(title)
-            .font(.system(size: viewModel.orientation.isLandscape ? 12 : 16, weight: .semibold, design: .monospaced))
+            .font(.system(size: 12, weight: .semibold, design: .monospaced))
             .shadow(radius: 2)
             .rotationEffect(viewModel.orientation.angle)
             .animation(.easeInOut, value: viewModel.orientation)
-    }
-}
-
-extension Orientation {
-    var isLandscape: Bool {
-        self == .landscapeLeft || self == .landscapeRight
     }
 }

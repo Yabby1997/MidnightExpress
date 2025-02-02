@@ -25,10 +25,16 @@ struct DialControlView<ViewModel: DialControlViewModel>: View {
         ZStack {
             HaebitApertureRing(
                 selection: $viewModel.frameRate,
-                entries: .constant([4, 6, 8, 10, 12]),
+                entries: .constant([4, 6, 8, 12, 24]),
                 feedbackStyle: .constant(.medium),
                 isMute: .constant(true)
-            ) { value in
+            ) { 
+                RoundedRectangle(cornerRadius: 8)
+                    .frame(width: 4, height: 8)
+                    .foregroundStyle(.white)
+                    .shadow(radius: 2)
+                    .offset(y: -4)
+            } content: { value in
                 DialView(title: "\(value)", viewModel: viewModel)
             }
             .opacity(viewModel.controlType == .frameRate ? 1.0 : .zero)
@@ -37,7 +43,13 @@ struct DialControlView<ViewModel: DialControlViewModel>: View {
                 entries: .constant([360, 315, 270, 225, 180]),
                 feedbackStyle: .constant(.medium),
                 isMute: .constant(true)
-            ) { value in
+            ) {
+                RoundedRectangle(cornerRadius: 8)
+                    .frame(width: 4, height: 8)
+                    .foregroundStyle(.white)
+                    .shadow(radius: 2)
+                    .offset(y: -4)
+            } content: { value in
                 DialView(title: "\(value)°", viewModel: viewModel)
             }
             .opacity(viewModel.controlType == .shutterAngle ? 1.0 : .zero)
@@ -46,7 +58,13 @@ struct DialControlView<ViewModel: DialControlViewModel>: View {
                 entries: .constant([-2.0, -1.7, -1.3, -1.0, -0.7, -0.3, 0, 0.3, 0.7, 1.0, 1.3, 1.7, 2.0]),
                 feedbackStyle: .constant(.medium),
                 isMute: .constant(true)
-            ) { value in
+            ) {
+                RoundedRectangle(cornerRadius: 4)
+                    .frame(width: 4, height: 8)
+                    .foregroundStyle(.white)
+                    .shadow(radius: 2)
+                    .offset(y: -4)
+            } content: { value in
                 DialView(title: String(format: "%+0.1f", value), viewModel: viewModel)
             }
             .opacity(viewModel.controlType == .exposure ? 1.0 : .zero)
