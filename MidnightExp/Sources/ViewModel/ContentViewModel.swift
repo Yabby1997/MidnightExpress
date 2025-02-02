@@ -25,6 +25,7 @@ enum Level {
     case landscapeRight(angle: Double)
     case landscapeLeft(angle: Double)
     case floor(roll: Double, pitch: Double)
+    case sky(roll: Double, pitch: Double)
 }
 
 enum Orientation: Equatable {
@@ -150,6 +151,8 @@ final class ContentViewModel: ObservableObject {
         let level: Level
         if 45 >= abs(motion.roll), 45 >= abs(motion.pitch) {
             level = .floor(roll: motion.roll, pitch: motion.pitch)
+        } else if 135 < abs(motion.roll), 45 >= abs(motion.pitch) {
+            level = .sky(roll: motion.roll, pitch: motion.pitch)
         } else {
             if (-45..<45) ~= motion.rotation {
                 level = .portrait(angle: motion.rotation)

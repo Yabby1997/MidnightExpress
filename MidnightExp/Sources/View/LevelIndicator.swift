@@ -17,7 +17,8 @@ struct LevelIndicator: View {
         case let .portraitUpsideDown(angle): HorizonLevelIndicator(originalAngle: .degrees(angle < .zero ? -180 : 180), actualAngle: .degrees(angle))
         case let .landscapeRight(angle): HorizonLevelIndicator(originalAngle: .degrees(90), actualAngle: .degrees(angle))
         case let .landscapeLeft(angle): HorizonLevelIndicator(originalAngle: .degrees(-90), actualAngle: .degrees(angle))
-        case let .floor(roll, pitch): FloorLevelIndicator(roll: .degrees(roll), pitch: .degrees(pitch))
+        case let .floor(roll, pitch): SurfaceLevelIndicator(roll: .degrees(roll), pitch: .degrees(pitch))
+        case let .sky(roll, pitch): SurfaceLevelIndicator(roll: .degrees(roll < .zero ? roll + 180 : roll - 180), pitch: .degrees(pitch))
         }
     }
 }
@@ -45,7 +46,7 @@ struct HorizonLevelIndicator: View {
     }
 }
 
-struct FloorLevelIndicator: View {
+struct SurfaceLevelIndicator: View {
     let roll: Angle
     let pitch: Angle
     
