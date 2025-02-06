@@ -12,6 +12,12 @@ import LightMeter
 import Obscura
 import UIKit
 
+enum ExposureState: Equatable {
+    case correctExposure
+    case overExposure
+    case underExposure
+}
+
 enum ControlType: CaseIterable, Hashable {
     case frameRate
     case shutterAngle
@@ -52,6 +58,7 @@ final class ContentViewModel: ObservableObject {
     
     @Published var level: Level = .portrait(angle: .zero)
     @Published var orientation: Orientation = .portrait
+    @Published var exposureState: ExposureState = .correctExposure
     
     @Published var controlType: ControlType = .frameRate
     @Published var shutterAngle: Int = 180
@@ -120,6 +127,21 @@ final class ContentViewModel: ObservableObject {
         camera.exposureOffset
             .receive(on: DispatchQueue.main)
             .assign(to: &$exposureOffset)
+        
+        Publishers.CombineLatest(camera.exposureOffset.removeDuplicates(), $exposureBias)
+            .map { $0 - $1 }
+            .map { offset in
+                if abs(offset) < 2 {
+                    return .correctExposure
+                } else if offset < 0 {
+                    return .underExposure
+                } else {
+                    return .overExposure
+                }
+            }
+            .removeDuplicates()
+            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+            .assign(to: &$exposureState)
         
         camera.zoomFactor
             .map { Float($0) }
