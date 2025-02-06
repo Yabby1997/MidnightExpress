@@ -21,7 +21,10 @@ struct ContentView: View {
             }
             LevelIndicator(level: $viewModel.level)
             VStack() {
-                Spacer()
+                ExposureStateContainerView(
+                    orientation: $viewModel.orientation,
+                    exposureState: $viewModel.exposureState
+                )
                 VStack {
                     ControlTypeView(viewModel: viewModel)
                     DialControlView(viewModel: viewModel)
