@@ -9,17 +9,8 @@
 import SwiftUI
 import HaebitUI
 
-protocol DialControlViewModel: ObservableObject {
-    var orientation: Orientation { get set }
-    var controlType: ControlType { get set }
-    var frameRate: Int { get set }
-    var shutterAngle: Int { get set }
-    var exposureBias: Float { get set }
-    var zoomOffset: Float { get set }
-}
-
-struct DialControlView<ViewModel: DialControlViewModel>: View {
-    @StateObject var viewModel: ViewModel
+struct DialControlView: View {
+    @StateObject var viewModel: ContentViewModel
     
     var body: some View {
         ZStack {
@@ -75,5 +66,3 @@ struct DialControlView<ViewModel: DialControlViewModel>: View {
         .animation(.easeIn, value: viewModel.controlType)
     }
 }
-
-extension ContentViewModel: DialControlViewModel {}

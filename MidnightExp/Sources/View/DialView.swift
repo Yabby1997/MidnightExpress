@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct DialView<ViewModel: DialControlViewModel>: View {
+struct DialView: View {
     let title: String
-    @StateObject var viewModel: ViewModel
+    @StateObject var viewModel: ContentViewModel
     
     var body: some View {
         Text(title)
