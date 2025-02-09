@@ -48,5 +48,6 @@ struct ControlTypeView: View {
         }
         .animation(.easeInOut, value: viewModel.controlType)
         .contentTransition(.numericText())
+        .frame(height: 60)
     }
 }

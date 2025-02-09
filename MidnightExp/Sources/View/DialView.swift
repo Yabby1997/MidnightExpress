@@ -14,7 +14,7 @@ struct DialView: View {
     
     var body: some View {
         Text(title)
-            .font(.system(size: 12, weight: .semibold, design: .monospaced))
+            .font(.system(size: 14, weight: .semibold, design: .monospaced))
             .shadow(radius: 2)
             .rotationEffect(viewModel.orientation.angle)
             .animation(.easeInOut, value: viewModel.orientation)

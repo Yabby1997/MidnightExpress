@@ -12,48 +12,34 @@ struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
-        ZStack {
-            CameraView(previewLayer: viewModel.previewLayer)
-                .ignoresSafeArea()
-                .onTapGesture(coordinateSpace: .local, perform: viewModel.didTapScreen)
-            if let focusLockPoint = viewModel.focusLockPoint {
-                LockIindicatorView(point: focusLockPoint, isHighlighted: viewModel.isFocusLocked)
-            }
-            LevelIndicator(level: $viewModel.level)
-            VStack() {
+        VStack() {
+            ZStack {
+                CameraView(previewLayer: viewModel.previewLayer)
+                LevelIndicator(level: $viewModel.level)
+                if let focusLockPoint = viewModel.focusLockPoint {
+                    LockIindicatorView(point: focusLockPoint, isHighlighted: viewModel.isFocusLocked)
+                }
                 ExposureStateContainerView(
                     orientation: $viewModel.orientation,
                     exposureState: $viewModel.exposureState
                 )
-                VStack {
-                    ControlTypeView(viewModel: viewModel)
-                    DialControlView(viewModel: viewModel)
-                    ZStack {
-                        ShutterButton(viewModel: viewModel)
-                        FlipButton(viewModel: viewModel)
-                        AFLButton(viewModel: viewModel)
-                    }
-                    .padding(.horizontal, 40)
-                    .padding(.bottom, 20)
-                }
-                .background {
-                    Color.clear
-                        .contentShape(Rectangle())
-                        .ignoresSafeArea()
-                        .allowsHitTesting(true)
-                }
+                DebugView(viewModel: viewModel)
             }
-            .shadow(color: .black.opacity(0.1), radius: 2)
+            .onTapGesture(coordinateSpace: .local, perform: viewModel.didTapScreen)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .aspectRatio(3 / 4, contentMode: .fit)
+            .padding(.horizontal, 2)
             VStack {
-                Text("ISO :\(viewModel.iso)")
-                Text("Shutter Speed: \(viewModel.shutterSpeed)")
-                Text("EV: \(viewModel.exposureValue)")
-                Text("Offset: \(viewModel.exposureOffset)")
-                Spacer()
+                ControlTypeView(viewModel: viewModel)
+                DialControlView(viewModel: viewModel)
+                ZStack {
+                    ShutterButton(viewModel: viewModel)
+                    FlipButton(viewModel: viewModel)
+                    AFLButton(viewModel: viewModel)
+                }
+                .padding(.top, 12)
+                .padding(.horizontal, 40)
             }
-            .font(.subheadline)
-            .foregroundStyle(.white)
-            .shadow(radius: 5)
         }
         .task { await viewModel.setup() }
         .persistentSystemOverlays(.hidden)
