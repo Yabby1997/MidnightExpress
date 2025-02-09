@@ -24,6 +24,7 @@ struct OffsetSlider: View {
                 )
         }
         .frame(height: 40)
+        .padding(.horizontal, 20)
     }
 }
 

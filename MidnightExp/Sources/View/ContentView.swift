@@ -47,6 +47,7 @@ struct ContentView: View {
         .sensoryFeedback(.impact(weight: .light), trigger: viewModel.focusLockPoint) { $1 != nil }
         .sensoryFeedback(.impact(weight: .medium), trigger: viewModel.isFocusLocked) { $1 }
         .sensoryFeedback(.impact(weight: .heavy), trigger: viewModel.isCapturing)
+        .sensoryFeedback(.impact(flexibility: .soft), trigger: viewModel.zoomFactor) { abs(Int($0 * 10) - Int($1 * 10)) == 1 }
     }
 }
 
