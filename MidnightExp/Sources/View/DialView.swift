@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DialView: View {
     let title: String
-    @StateObject var viewModel: ContentViewModel
+    @StateObject var viewModel: MidnightExpressViewModel
     
     var body: some View {
         Text(title)

@@ -10,7 +10,7 @@ import SwiftUI
 import HaebitUI
 
 struct DialControlView: View {
-    @StateObject var viewModel: ContentViewModel
+    @StateObject var viewModel: MidnightExpressViewModel
     
     var body: some View {
         VStack {

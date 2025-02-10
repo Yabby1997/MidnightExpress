@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MidnightExpressView.swift
 //  MidnightExpDev
 //
 //  Created by Seunghun on 12/18/24.
@@ -8,8 +8,8 @@
 import SwiftUI
 
 @MainActor
-struct ContentView: View {
-    @StateObject var viewModel = ContentViewModel()
+struct MidnightExpressView: View {
+    @StateObject var viewModel = MidnightExpressViewModel()
     
     var body: some View {
         VStack() {

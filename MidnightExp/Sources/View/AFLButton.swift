@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AFLButton: View {
-    @StateObject var viewModel: ContentViewModel
+    @StateObject var viewModel: MidnightExpressViewModel
     
     var body: some View {
         HStack {

@@ -28,7 +28,11 @@ struct CameraView: UIViewRepresentable {
         }
         
         private func setupLayer() {
+            #if targetEnvironment(simulator)
+            previewLayer.backgroundColor = UIColor.magenta.cgColor
+            #else
             previewLayer.backgroundColor = UIColor.black.cgColor
+            #endif
             layer.addSublayer(previewLayer)
         }
     }

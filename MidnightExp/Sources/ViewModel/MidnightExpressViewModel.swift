@@ -1,5 +1,5 @@
     //
-//  ContentViewModel.swift
+//  MidnightExpressViewModel.swift
 //  MidnightExpDev
 //
 //  Created by Seunghun on 12/26/24.
@@ -52,7 +52,7 @@ enum Orientation: Equatable {
 }
 
 @MainActor
-final class ContentViewModel: ObservableObject {
+final class MidnightExpressViewModel: ObservableObject {
     let camera = ObscuraCamera()
     var previewLayer: CALayer { camera.previewLayer }
     

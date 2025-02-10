@@ -11,7 +11,7 @@ import SwiftUI
 struct MidnightExpressApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MidnightExpressView()
         }
     }
 }

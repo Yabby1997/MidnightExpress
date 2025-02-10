@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct ShutterButton: View {
-    @StateObject var viewModel: ContentViewModel
+    @StateObject var viewModel: MidnightExpressViewModel
+    
     var body: some View {
         HStack {
             Spacer()
