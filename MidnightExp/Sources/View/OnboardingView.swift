@@ -15,6 +15,15 @@ struct OnboardingView: View {
         ZStack {
             VideoView(playerLayer: viewModel.playerLayer)
                 .ignoresSafeArea()
+            Color.black.opacity(0.7)
+                .ignoresSafeArea()
+            OnboardingPagingView(stage: $viewModel.stage)
+            VStack {
+                Spacer()
+                Button(action: viewModel.didTapNext) {
+                    Text("Next")
+                }
+            }
         }
         .onAppear(perform: viewModel.onAppear)
     }
