@@ -10,6 +10,7 @@ import SwiftUI
 @MainActor
 struct MidnightExpressView: View {
     @StateObject var viewModel = MidnightExpressViewModel()
+    @AppStorage(AppStorageKeys.onboardingStage.rawValue) var onboardingStage = OnboardingStage.intro
     
     var body: some View {
         VStack() {
@@ -41,13 +42,19 @@ struct MidnightExpressView: View {
                 .padding(.horizontal, 40)
             }
         }
-        .task { await viewModel.setup() }
         .persistentSystemOverlays(.hidden)
         .statusBar(hidden: true)
         .sensoryFeedback(.impact(weight: .light), trigger: viewModel.focusLockPoint) { $1 != nil }
         .sensoryFeedback(.impact(weight: .medium), trigger: viewModel.isFocusLocked) { $1 }
         .sensoryFeedback(.impact(weight: .heavy), trigger: viewModel.isCapturing)
         .sensoryFeedback(.impact(flexibility: .soft), trigger: viewModel.zoomFactor) { abs(Int($0 * 10) - Int($1 * 10)) == 1 }
+        .fullScreenCover(isPresented: Binding(get: { onboardingStage != .ready }, set: { _ in })) {
+            OnboardingView(stage: $onboardingStage)
+        }
+        .onChange(of: onboardingStage, initial: true) { _, stage in
+            guard stage == .ready else { return }
+            Task { await viewModel.onReady() }
+        }
     }
 }
 

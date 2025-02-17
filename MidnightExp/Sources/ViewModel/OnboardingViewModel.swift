@@ -10,17 +10,9 @@ import AVFoundation
 import Combine
 import Foundation
 
-enum OnboardingStage {
-    case intro
-    case tutorial
-    case authorization
-    case ready
-}
-
 final class OnboardingViewModel: ObservableObject {
     private let player = AVPlayer()
     let playerLayer: AVPlayerLayer
-    @Published var stage: OnboardingStage = .intro
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -52,12 +44,7 @@ final class OnboardingViewModel: ObservableObject {
         player.play()
     }
     
-    func didTapNext() {
-        switch stage {
-        case .intro: stage = .tutorial
-        case .tutorial: stage = .authorization
-        case .authorization: stage = .ready
-        case .ready: break
-        }
+    func onChangeScenePhase() {
+        player.play()
     }
 }

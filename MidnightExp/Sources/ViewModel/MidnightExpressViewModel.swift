@@ -81,7 +81,7 @@ final class MidnightExpressViewModel: ObservableObject {
     private var setFrameRateTask: Task<Void, Error>?
     private var setExposureBiasTask: Task<Void, Error>?
     
-    func setup() async {
+    func onReady() async {
         do {
             try await camera.setup()
             try await camera.requestMicAuthorization()
