@@ -20,7 +20,7 @@ struct OnboardingView: View {
             Color.black.opacity(0.7)
                 .ignoresSafeArea()
             ZStack {
-                Text("Intro")
+                IntroView { stage = .tutorial }
                     .opacity(stage == .intro ? 1 : 0)
                     .onTapGesture { stage = .tutorial }
                 Text("Tutorial")
