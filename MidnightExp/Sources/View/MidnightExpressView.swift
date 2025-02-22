@@ -55,6 +55,9 @@ struct MidnightExpressView: View {
             guard stage == .ready else { return }
             Task { await viewModel.onReady() }
         }
+        .onTapGesture(count: 3) {
+            onboardingStage = .intro
+        }
     }
 }
 

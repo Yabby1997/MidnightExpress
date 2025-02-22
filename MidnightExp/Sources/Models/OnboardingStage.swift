@@ -10,7 +10,6 @@ import Foundation
 
 enum OnboardingStage: Int, Equatable {
     case intro
-    case tutorial
     case authorization
     case ready
 }
