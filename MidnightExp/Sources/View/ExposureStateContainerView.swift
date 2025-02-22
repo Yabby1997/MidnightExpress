@@ -26,23 +26,15 @@ struct ExposureStateContainerView: View {
                     .rotateClockwise()
             }
             .opacity(orientation == .portraitUpsideDown && exposureState != .correctExposure ? 1.0 : .zero)
-            VStack {
+            HStack {
                 Spacer()
-                HStack {
-                    ExposureStateView(exposureState: $exposureState)
-                        .rotateAnticlockwise()
-                    Spacer()
-                }
-                Spacer()
+                ExposureStateView(exposureState: $exposureState)
+                    .rotateAnticlockwise()
             }
             .opacity(orientation == .landscapeLeft && exposureState != .correctExposure ? 1.0 : .zero)
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    ExposureStateView(exposureState: $exposureState)
-                        .rotateClockwise()
-                }
+            HStack {
+                ExposureStateView(exposureState: $exposureState)
+                    .rotateClockwise()
                 Spacer()
             }
             .opacity(orientation == .landscapeRight && exposureState != .correctExposure ? 1.0 : .zero)

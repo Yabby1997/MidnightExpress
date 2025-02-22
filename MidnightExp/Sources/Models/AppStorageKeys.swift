@@ -10,4 +10,5 @@ import Foundation
 
 enum AppStorageKeys: String, CaseIterable{
     case onboardingStage = "OnboardingStage"
+    case tutorialStage = "TutorialStage"
 }

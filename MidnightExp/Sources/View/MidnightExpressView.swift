@@ -11,6 +11,7 @@ import SwiftUI
 struct MidnightExpressView: View {
     @StateObject var viewModel = MidnightExpressViewModel()
     @AppStorage(AppStorageKeys.onboardingStage.rawValue) var onboardingStage = OnboardingStage.intro
+    @AppStorage(AppStorageKeys.tutorialStage.rawValue) var tutorialStage = TutorialStage.fps
     
     var body: some View {
         VStack() {
@@ -24,6 +25,7 @@ struct MidnightExpressView: View {
                     orientation: $viewModel.orientation,
                     exposureState: $viewModel.exposureState
                 )
+                TutorialContainerView(stage: $tutorialStage, orientation: $viewModel.orientation)
                 DebugView(viewModel: viewModel)
             }
             .onTapGesture(coordinateSpace: .local, perform: viewModel.didTapScreen)
@@ -56,7 +58,8 @@ struct MidnightExpressView: View {
             Task { await viewModel.onReady() }
         }
         .onTapGesture(count: 3) {
-            onboardingStage = .intro
+            // TODO: Remove this line for release. Just for test only.
+            UserDefaults.standard.resetAppStorage()
         }
     }
 }
