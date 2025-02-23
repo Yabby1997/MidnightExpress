@@ -10,8 +10,8 @@ import SwiftUI
 
 
 struct IntroView: View {
-    let proceed: () -> Void
     @State private var isLogDisplaying = true
+    let proceed: () -> Void
     
     var body: some View {
         ZStack {

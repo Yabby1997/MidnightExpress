@@ -56,6 +56,12 @@ final class MidnightExpressViewModel: ObservableObject {
     let camera = ObscuraCamera()
     var previewLayer: CALayer { camera.previewLayer }
     
+    @Settings(key: SettingsKey.onboardingStage.rawValue, defaultValue: OnboardingStage.intro)
+    var onboardingStage: OnboardingStage
+    
+    @Settings(key: SettingsKey.tutorialStage.rawValue, defaultValue: TutorialStage.fps)
+    var tutorialStage: TutorialStage
+    
     @Published var level: Level = .portrait(angle: .zero)
     @Published var orientation: Orientation = .portrait
     @Published var exposureState: ExposureState = .correctExposure
@@ -78,10 +84,26 @@ final class MidnightExpressViewModel: ObservableObject {
     var isFocusUnlockable: Bool { (isFocusLocked || focusLockPoint != nil) && isFrontFacing == false }
     
     private var cancellables: Set<AnyCancellable> = []
+    private var sessionCancellables: Set<AnyCancellable> = []
     private var setFrameRateTask: Task<Void, Error>?
     private var setExposureBiasTask: Task<Void, Error>?
     
-    func onReady() async {
+    init() {
+        bind()
+    }
+    
+    private func bind() {
+        $onboardingStage
+            .filter { $0 == .ready }
+            .sink { [weak self] _ in
+                Task { await self?.setup() }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setup() async {
+        sessionCancellables = []
+        
         do {
             try await camera.setup()
             try await camera.requestMicAuthorization()
@@ -152,7 +174,7 @@ final class MidnightExpressViewModel: ObservableObject {
             .sink { [weak self] frameRate, exposureBias, exposureValue, apertureValue in
                 self?.setFrameRate(frameRate, exposureValue: exposureValue - exposureBias, apertureValue: apertureValue)
             }
-            .store(in: &cancellables)
+            .store(in: &sessionCancellables)
         
         Publishers.CombineLatest(
             Timer.publish(every: 0.01, on: .main, in: .default).autoconnect(),
@@ -168,7 +190,7 @@ final class MidnightExpressViewModel: ObservableObject {
         .sink { [weak self] zoomFactor in
             try? self?.camera.zoom(factor: zoomFactor, animated: false)
         }
-        .store(in: &cancellables)
+        .store(in: &sessionCancellables)
         
         MotionManager.shared.motionPublisher
             .receive(on: DispatchQueue.main)
@@ -176,7 +198,7 @@ final class MidnightExpressViewModel: ObservableObject {
                 self?.updateLevel(motion)
                 self?.updateOrientationIfNeeded(motion)
             }
-            .store(in: &cancellables)
+            .store(in: &sessionCancellables)
     }
     
     private func updateLevel(_ motion: Motion) {

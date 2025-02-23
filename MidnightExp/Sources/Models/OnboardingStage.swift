@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum OnboardingStage: Int, Equatable {
+enum OnboardingStage: Int, Equatable, Codable {
     case intro
     case authorization
     case ready

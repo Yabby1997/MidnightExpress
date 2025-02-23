@@ -9,7 +9,7 @@
 import Foundation
 
 extension UserDefaults {
-    func resetAppStorage() {
-        AppStorageKeys.allCases.forEach { removeObject(forKey: $0.rawValue) }
+    func resetSettings() {
+        SettingsKey.allCases.forEach { removeObject(forKey: $0.rawValue) }
     }
 }

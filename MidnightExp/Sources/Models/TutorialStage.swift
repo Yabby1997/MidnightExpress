@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TutorialStage: Int, Equatable {
+enum TutorialStage: Int, Equatable, Codable {
     case fps
     case shutterAngle
     case exposureBias

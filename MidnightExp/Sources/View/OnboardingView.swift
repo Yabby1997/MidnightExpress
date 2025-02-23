@@ -22,7 +22,6 @@ struct OnboardingView: View {
             ZStack {
                 IntroView { stage = .authorization }
                     .opacity(stage == .intro ? 1 : 0)
-                    .onTapGesture { stage = .authorization }
                 AuthorizationView { stage = .ready }
                     .opacity(stage == .authorization ? 1 : 0)
             }

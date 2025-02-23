@@ -1,5 +1,5 @@
 //
-//  AppStorageKeys.swift
+//  SettingsKey.swift
 //  MidnightExpDev
 //
 //  Created by Seunghun on 2/17/25.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum AppStorageKeys: String, CaseIterable{
+enum SettingsKey: String, CaseIterable{
     case onboardingStage = "OnboardingStage"
     case tutorialStage = "TutorialStage"
 }
