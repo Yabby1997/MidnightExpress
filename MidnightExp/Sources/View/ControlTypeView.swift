@@ -15,6 +15,7 @@ struct ControlTypeView: View {
         HStack(spacing: 22) {
             Text("\(viewModel.frameRate)fps")
                 .font(.system(size: 18, weight: .bold, design: .rounded))
+                .bottomLined(isVisible: viewModel.tutorialStage == .fps)
                 .animation(.easeIn, value: viewModel.frameRate)
                 .foregroundStyle(viewModel.controlType == .frameRate ? .white : .gray)
                 .onTapGesture { viewModel.controlType = .frameRate }
@@ -23,6 +24,7 @@ struct ControlTypeView: View {
                 .frame(width: 60)
             Text("\(viewModel.shutterAngle)°")
                 .font(.system(size: 18, weight: .bold, design: .rounded))
+                .bottomLined(isVisible: viewModel.tutorialStage == .shutterAngle)
                 .animation(.easeIn, value: viewModel.shutterAngle)
                 .foregroundStyle(viewModel.controlType == .shutterAngle ? .white : .gray)
                 .onTapGesture { viewModel.controlType = .shutterAngle }
@@ -31,6 +33,7 @@ struct ControlTypeView: View {
                 .frame(width: 60)
             Text(String(format: "%+0.1f", viewModel.exposureBias))
                 .font(.system(size: 18, weight: .bold, design: .rounded))
+                .bottomLined(isVisible: viewModel.tutorialStage == .exposureBias)
                 .animation(.easeIn, value: viewModel.exposureBias)
                 .foregroundStyle(viewModel.controlType == .exposure ? .white : .gray)
                 .onTapGesture { viewModel.controlType = .exposure }
@@ -39,6 +42,7 @@ struct ControlTypeView: View {
                 .frame(width: 60)
             Text("x" + String(format: "%.1f", viewModel.zoomFactor))
                 .font(.system(size: 18, weight: .bold, design: .rounded))
+                .bottomLined(isVisible: viewModel.tutorialStage == .zoom)
                 .animation(.easeIn, value: viewModel.zoomFactor)
                 .foregroundStyle(viewModel.controlType == .zoom ? .white : .gray)
                 .onTapGesture { viewModel.controlType = .zoom }
@@ -47,6 +51,7 @@ struct ControlTypeView: View {
                 .frame(width: 60)
         }
         .animation(.easeInOut, value: viewModel.controlType)
+        .animation(.easeIn, value: viewModel.tutorialStage)
         .contentTransition(.numericText())
         .frame(height: 60)
     }

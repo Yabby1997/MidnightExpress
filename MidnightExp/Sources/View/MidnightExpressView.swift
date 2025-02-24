@@ -35,9 +35,9 @@ struct MidnightExpressView: View {
                 ControlTypeView(viewModel: viewModel)
                 DialControlView(viewModel: viewModel)
                 ZStack {
+                    AFLButton(viewModel: viewModel)
                     ShutterButton(viewModel: viewModel)
                     FlipButton(viewModel: viewModel)
-                    AFLButton(viewModel: viewModel)
                 }
                 .padding(.top, 12)
                 .padding(.horizontal, 40)

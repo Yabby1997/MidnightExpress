@@ -1,5 +1,5 @@
 //
-//  DialView.swift
+//  FrameRateDialView.swift
 //  MidnightExp
 //
 //  Created by Seunghun on 1/27/25.
@@ -8,15 +8,17 @@
 
 import SwiftUI
 
-struct DialView: View {
-    let title: String
+struct FrameRateDialView: View {
+    let value: Int
     @StateObject var viewModel: MidnightExpressViewModel
     
     var body: some View {
-        Text(title)
+        Text("\(value)")
             .font(.system(size: 14, weight: .semibold, design: .monospaced))
+            .bottomLined(isVisible: viewModel.tutorialStage == .fps && value == 4)
             .shadow(radius: 2)
             .rotationEffect(viewModel.orientation.angle)
             .animation(.easeInOut, value: viewModel.orientation)
+            .animation(.easeIn, value: viewModel.tutorialStage)
     }
 }

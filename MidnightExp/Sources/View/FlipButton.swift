@@ -14,12 +14,17 @@ struct FlipButton: View {
     var body: some View {
         HStack {
             Spacer()
-            Button(action: viewModel.didTapShutter) {
-                Circle()
-                    .frame(width: 60, height: 60)
-                    .foregroundStyle(viewModel.isCapturing ? .red : .white)
+            Button(action: viewModel.didTapToggle) {
+                Image(systemName: "arrow.trianglehead.2.counterclockwise.rotate.90")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 30)
+                    .foregroundStyle(.white)
+                    .bottomLined(isVisible: viewModel.tutorialStage == .selfie)
+                    .rotationEffect(viewModel.orientation.angle)
+                    .animation(.easeInOut, value: viewModel.orientation)
+                    .animation(.easeInOut, value: viewModel.tutorialStage)
             }
-            Spacer()
         }
     }
 }

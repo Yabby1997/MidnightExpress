@@ -14,15 +14,12 @@ struct ShutterButton: View {
     var body: some View {
         HStack {
             Spacer()
-            Button(action: viewModel.didTapToggle) {
-                Image(systemName: "arrow.trianglehead.2.counterclockwise.rotate.90")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30)
-                    .foregroundStyle(.white)
-                    .rotationEffect(viewModel.orientation.angle)
-                    .animation(.easeInOut, value: viewModel.orientation)
+            Button(action: viewModel.didTapShutter) {
+                Circle()
+                    .frame(width: 60, height: 60)
+                    .foregroundStyle(viewModel.isCapturing ? .red : .white)
             }
+            Spacer()
         }
     }
 }

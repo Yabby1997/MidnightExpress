@@ -32,4 +32,8 @@ enum TutorialStage: Int, Equatable, Codable {
         case .done: self = .done
         }
     }
+    
+    func hasReached(_ other: TutorialStage) -> Bool {
+        self.rawValue >= other.rawValue
+    }
 }

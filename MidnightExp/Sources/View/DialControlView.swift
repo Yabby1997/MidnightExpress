@@ -24,7 +24,7 @@ struct DialControlView: View {
                     feedbackStyle: .constant(.medium),
                     isMute: .constant(true)
                 ) { value in
-                    DialView(title: "\(value)", viewModel: viewModel)
+                    FrameRateDialView(value: value, viewModel: viewModel)
                 }
                 .opacity(viewModel.controlType == .frameRate ? 1.0 : .zero)
                 HaebitApertureRing(
@@ -33,7 +33,7 @@ struct DialControlView: View {
                     feedbackStyle: .constant(.medium),
                     isMute: .constant(true)
                 ) { value in
-                    DialView(title: "\(value)°", viewModel: viewModel)
+                    ShutterAngleDialView(value: value, viewModel: viewModel)
                 }
                 .opacity(viewModel.controlType == .shutterAngle ? 1.0 : .zero)
                 HaebitApertureRing(
@@ -42,7 +42,7 @@ struct DialControlView: View {
                     feedbackStyle: .constant(.medium),
                     isMute: .constant(true)
                 ) { value in
-                    DialView(title: String(format: "%+0.1f", value), viewModel: viewModel)
+                    ExposureBiasDialView(value: value, viewModel: viewModel)
                 }
                 .opacity(viewModel.controlType == .exposure ? 1.0 : .zero)
                 OffsetSlider(offset: $viewModel.zoomOffset)

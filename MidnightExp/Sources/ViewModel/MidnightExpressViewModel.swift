@@ -85,6 +85,7 @@ final class MidnightExpressViewModel: ObservableObject {
     
     private var cancellables: Set<AnyCancellable> = []
     private var sessionCancellables: Set<AnyCancellable> = []
+    private var tutorialCancellables: Set<AnyCancellable> = []
     private var setFrameRateTask: Task<Void, Error>?
     private var setExposureBiasTask: Task<Void, Error>?
     
@@ -96,12 +97,13 @@ final class MidnightExpressViewModel: ObservableObject {
         $onboardingStage
             .filter { $0 == .ready }
             .sink { [weak self] _ in
-                Task { await self?.setup() }
+                Task { await self?.setupSession() }
+                self?.setupTutorialIfNeeded()
             }
             .store(in: &cancellables)
     }
     
-    private func setup() async {
+    private func setupSession() async {
         sessionCancellables = []
         
         do {
@@ -201,6 +203,100 @@ final class MidnightExpressViewModel: ObservableObject {
             .store(in: &sessionCancellables)
     }
     
+    private func setupTutorialIfNeeded() {
+        tutorialCancellables = []
+        
+        guard tutorialStage != .done else { return }
+        
+        Publishers.CombineLatest($tutorialStage, $frameRate)
+            .filter { $0 == .fps && $1 == 4 }
+            .first()
+            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                tutorialStage.next()
+            }
+            .store(in: &tutorialCancellables)
+        
+        Publishers.CombineLatest($tutorialStage, $shutterAngle)
+            .filter { $0 == .shutterAngle && $1 == 360 }
+            .first()
+            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                tutorialStage.next()
+            }
+            .store(in: &tutorialCancellables)
+        
+        Publishers.CombineLatest($tutorialStage, $exposureBias)
+            .filter { $0 == .exposureBias && $1 == -2.0 }
+            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                tutorialStage.next()
+            }
+            .store(in: &tutorialCancellables)
+    
+        $tutorialStage.filter { $0 == .exposure }
+            .first()
+            .delay(for: .seconds(2), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                frameRate = 8
+                shutterAngle = 180
+                exposureBias = .zero
+            }
+            .store(in: &tutorialCancellables)
+        
+        $tutorialStage.filter { $0 == .exposure }
+            .first()
+            .delay(for: .seconds(5), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                tutorialStage.next()
+            }
+            .store(in: &tutorialCancellables)
+        
+        Publishers.CombineLatest($tutorialStage, $zoomFactor)
+            .filter { $0 == .zoom && $1 >= 3.0 }
+            .first()
+            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                tutorialStage.next()
+            }
+            .store(in: &tutorialCancellables)
+        
+        Publishers.CombineLatest($tutorialStage, $isFocusLocked)
+            .filter { $0 == .focus && $1 == true }
+            .first()
+            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                tutorialStage.next()
+            }
+            .store(in: &tutorialCancellables)
+        
+        Publishers.CombineLatest($tutorialStage, camera.isFrontFacing)
+            .filter { $0 == .selfie && $1 == true }
+            .first()
+            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                tutorialStage.next()
+            }
+            .store(in: &tutorialCancellables)
+        
+        $tutorialStage.filter { $0 == .record }
+            .first()
+            .delay(for: .seconds(5), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                tutorialStage.next()
+            }
+            .store(in: &tutorialCancellables)
+    }
+    
     private func updateLevel(_ motion: Motion) {
         let level: Level
         if 45 >= abs(motion.roll), 45 >= abs(motion.pitch) {
@@ -250,10 +346,12 @@ final class MidnightExpressViewModel: ObservableObject {
     }
     
     func didTapToggle() {
+        guard tutorialStage.hasReached(.selfie) else { return }
         try? camera.switchCamera()
     }
     
     func didTapShutter() {
+        guard tutorialStage.hasReached(.record) else { return }
         Task {
             do {
                 if isCapturing, let result = try await camera.stopRecordVideo(), let videoPath = result.videoPath {
@@ -273,6 +371,7 @@ final class MidnightExpressViewModel: ObservableObject {
     }
     
     func didTapScreen(on position: CGPoint) {
+        guard tutorialStage.hasReached(.focus) else { return }
         Task {
             do {
                 try camera.lockFocus(on: position)
