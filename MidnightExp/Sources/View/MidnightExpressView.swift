@@ -19,12 +19,7 @@ struct MidnightExpressView: View {
                 if let focusLockPoint = viewModel.focusLockPoint {
                     LockIindicatorView(point: focusLockPoint, isHighlighted: viewModel.isFocusLocked)
                 }
-                ExposureStateContainerView(
-                    orientation: $viewModel.orientation,
-                    exposureState: $viewModel.exposureState
-                )
-                // TODO: Fix layout issue on hiding tutorial container
-                TutorialContainerView(stage: $viewModel.tutorialStage, orientation: $viewModel.orientation)
+                RotatingCameraOverlayView(viewModel: viewModel)
                 DebugView(viewModel: viewModel)
             }
             .onTapGesture(coordinateSpace: .local, perform: viewModel.didTapScreen)
@@ -54,7 +49,8 @@ struct MidnightExpressView: View {
         }
         .onTapGesture(count: 3) {
             // TODO: Remove this line for release. Just for test only.
-            UserDefaults.standard.resetSettings()
+//            UserDefaults.standard.resetSettings()
+            viewModel.tutorialStage = viewModel.tutorialStage == .done ? .fps : .done
         }
     }
 }
