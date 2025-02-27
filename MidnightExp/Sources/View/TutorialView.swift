@@ -30,7 +30,7 @@ struct TutorialView: View {
             )
         case .exposure:
             TutorialStageView(
-                tutorial: "빛이 부족하거나 과다한 경우 아래와 같이 경고가 표시돼요.\n프레임레이트와 셔터앵글을 조절해 문제를 해결할 수 있어요.",
+                tutorial: "빛이 부족하거나 과다한 경우 다음과 같이 경고가 표시돼요.\n프레임레이트와 셔터앵글을 조절해 문제를 해결할 수 있어요.",
                 instruction: nil
             )
         case .zoom:

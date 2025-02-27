@@ -101,13 +101,6 @@ final class MidnightExpressViewModel: ObservableObject {
                 self?.setupTutorialIfNeeded()
             }
             .store(in: &cancellables)
-        
-        $tutorialStage
-            .filter { $0 == .done }
-            .sink { [weak self] _ in
-                self?.tutorialCancellables = []
-            }
-            .store(in: &cancellables)
     }
     
     private func setupSession() async {
@@ -238,6 +231,7 @@ final class MidnightExpressViewModel: ObservableObject {
         
         Publishers.CombineLatest($tutorialStage, $exposureBias)
             .filter { $0 == .exposureBias && $1 == -2.0 }
+            .first()
             .delay(for: .seconds(1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
@@ -262,13 +256,21 @@ final class MidnightExpressViewModel: ObservableObject {
                 frameRate = 8
                 shutterAngle = 180
                 exposureBias = .zero
-                exposureState = .correctExposure
             }
             .store(in: &tutorialCancellables)
         
+            $tutorialStage.filter { $0 == .exposure }
+                .first()
+                .delay(for: .seconds(4), scheduler: DispatchQueue.main)
+                .sink { [weak self] _ in
+                    guard let self else { return }
+                    exposureState = .correctExposure
+                }
+                .store(in: &tutorialCancellables)
+        
         $tutorialStage.filter { $0 == .exposure }
             .first()
-            .delay(for: .seconds(4.5), scheduler: DispatchQueue.main)
+            .delay(for: .seconds(5.5), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
                 tutorialStage = .zoom
