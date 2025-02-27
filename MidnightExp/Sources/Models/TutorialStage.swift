@@ -19,20 +19,6 @@ enum TutorialStage: Int, Equatable, Codable {
     case record
     case done
     
-    mutating func next() {
-        switch self {
-        case .fps: self = .shutterAngle
-        case .shutterAngle: self = .exposureBias
-        case .exposureBias: self = .exposure
-        case .exposure: self = .zoom
-        case .zoom: self = .focus
-        case .focus: self = .selfie
-        case .selfie: self = .record
-        case .record: self = .done
-        case .done: self = .done
-        }
-    }
-    
     func hasReached(_ other: TutorialStage) -> Bool {
         self.rawValue >= other.rawValue
     }

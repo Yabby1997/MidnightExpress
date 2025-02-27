@@ -57,8 +57,6 @@ struct TutorialContainerView: View {
             }
             .opacity(orientation == .landscapeLeft ? 1.0 : .zero)
         }
-        .font(.system(size: 14, weight: .bold))
-        .foregroundStyle(.yellow)
         .shadow(radius: 2)
         .padding(.horizontal, 12)
         .animation(.easeInOut, value: stage)

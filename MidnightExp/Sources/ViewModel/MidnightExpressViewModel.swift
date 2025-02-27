@@ -101,6 +101,13 @@ final class MidnightExpressViewModel: ObservableObject {
                 self?.setupTutorialIfNeeded()
             }
             .store(in: &cancellables)
+        
+        $tutorialStage
+            .filter { $0 == .done }
+            .sink { [weak self] _ in
+                self?.tutorialCancellables = []
+            }
+            .store(in: &cancellables)
     }
     
     private func setupSession() async {
@@ -152,8 +159,9 @@ final class MidnightExpressViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$exposureOffset)
         
-        Publishers.CombineLatest(camera.exposureOffset.removeDuplicates(), $exposureBias)
-            .map { $0 - $1 }
+        Publishers.CombineLatest3($tutorialStage, camera.exposureOffset.removeDuplicates(), $exposureBias)
+            .filter { $0.0.hasReached(.done) }
+            .map { $1 - $2 }
             .map { offset in
                 if abs(offset) < 2 {
                     return .correctExposure
@@ -211,88 +219,108 @@ final class MidnightExpressViewModel: ObservableObject {
         Publishers.CombineLatest($tutorialStage, $frameRate)
             .filter { $0 == .fps && $1 == 4 }
             .first()
-            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .delay(for: .seconds(1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
-                tutorialStage.next()
+                tutorialStage = .shutterAngle
             }
             .store(in: &tutorialCancellables)
         
         Publishers.CombineLatest($tutorialStage, $shutterAngle)
             .filter { $0 == .shutterAngle && $1 == 360 }
             .first()
-            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .delay(for: .seconds(1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
-                tutorialStage.next()
+                tutorialStage = .exposureBias
             }
             .store(in: &tutorialCancellables)
         
         Publishers.CombineLatest($tutorialStage, $exposureBias)
             .filter { $0 == .exposureBias && $1 == -2.0 }
-            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .delay(for: .seconds(1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
-                tutorialStage.next()
+                tutorialStage = .exposure
+            }
+            .store(in: &tutorialCancellables)
+        
+        $tutorialStage.filter { $0 == .exposure }
+            .first()
+            .delay(for: .seconds(1.5), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                exposureState = .underExposure
             }
             .store(in: &tutorialCancellables)
     
         $tutorialStage.filter { $0 == .exposure }
             .first()
-            .delay(for: .seconds(2), scheduler: DispatchQueue.main)
+            .delay(for: .seconds(3.5), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
                 frameRate = 8
                 shutterAngle = 180
                 exposureBias = .zero
+                exposureState = .correctExposure
             }
             .store(in: &tutorialCancellables)
         
         $tutorialStage.filter { $0 == .exposure }
             .first()
-            .delay(for: .seconds(5), scheduler: DispatchQueue.main)
+            .delay(for: .seconds(4.5), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
-                tutorialStage.next()
+                tutorialStage = .zoom
             }
             .store(in: &tutorialCancellables)
         
         Publishers.CombineLatest($tutorialStage, $zoomFactor)
-            .filter { $0 == .zoom && $1 >= 3.0 }
+            .filter { $0 == .zoom && $1 >= 2 }
             .first()
-            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .delay(for: .seconds(1.5), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
-                tutorialStage.next()
+                tutorialStage = .focus
             }
             .store(in: &tutorialCancellables)
         
         Publishers.CombineLatest($tutorialStage, $isFocusLocked)
-            .filter { $0 == .focus && $1 == true }
+            .filter { $0 == .focus && $1 }
             .first()
             .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
-                tutorialStage.next()
+                tutorialStage = .selfie
             }
             .store(in: &tutorialCancellables)
         
         Publishers.CombineLatest($tutorialStage, camera.isFrontFacing)
             .filter { $0 == .selfie && $1 == true }
             .first()
-            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .delay(for: .seconds(1.5), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
-                tutorialStage.next()
+                tutorialStage = .record
             }
             .store(in: &tutorialCancellables)
         
-        $tutorialStage.filter { $0 == .record }
+        Publishers.CombineLatest($tutorialStage, $isCapturing)
+            .filter { $0 == .record && $1 == true }
             .first()
-            .delay(for: .seconds(5), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
-                tutorialStage.next()
+                tutorialStage = .done
+            }
+            .store(in: &tutorialCancellables)
+        
+        
+        $tutorialStage.filter { $0 == .record }
+            .first()
+            .delay(for: .seconds(3), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                tutorialStage = .done
             }
             .store(in: &tutorialCancellables)
     }

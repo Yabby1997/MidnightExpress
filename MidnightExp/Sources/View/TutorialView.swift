@@ -15,44 +15,44 @@ struct TutorialView: View {
         switch stage {
         case .fps:
             TutorialStageView(
-                instruction: "fps가 작아질수록 단절된 느낌을, 커질수록 연속적인 느낌을 연출할 수 있어요.\nfps를 4로 조절해 단절된 느낌을 연출해 보세요.",
-                actionLabel: "건너 뛰기"
-            ) { stage.next() }
+                tutorial: "프레임레이트가 작아질수록 단절된 영상을,\n커질수록 연속적인 영상을 촬영할 수 있어요.",
+                instruction: "프레임레이트를 4로 조절해 차이를 느껴보세요."
+            )
         case .shutterAngle:
             TutorialStageView(
-                instruction: "셔터 앵글이 커질수록 풍부한 잔상을, 작아질수록 적은 잔상을 연출할 수 있어요.\n셔터 앵글을 360도로 조절해 풍부한 잔상을 연출해 보세요.",
-                actionLabel: "건너 뛰기"
-            ) { stage.next() }
+                tutorial: "셔터앵글이 커질수록 부드럽고 풍부한 잔상을,\n작아질수록 적은 잔상을 연출할 수 있어요.",
+                instruction: "셔터앵글을 360도로 조절해 차이를 느껴보세요."
+            )
         case .exposureBias:
             TutorialStageView(
-                instruction: "노출 보정을 통해 촬영될 결과물의 밝기를 조절할 수 있어요.\n-2.0으로 더 어둡게 조절해 보세요.",
-                actionLabel: "건너 뛰기"
-            ) { stage.next() }
+                tutorial: "노출보정값이 작을수록 어두운 영상을,\n커질수록 밝은 영상을 촬영할 수 있어요.",
+                instruction: "노출보정값을 -2.0으로 조절해 차이를 느껴보세요."
+            )
         case .exposure:
             TutorialStageView(
-                instruction: "과노출이나 노출부족이 발생하는 경우 경고가 표시돼요.\nfps와 셔터 앵글을 조절해 노출 문제를 해결할 수 있어요.",
-                actionLabel: "확인"
-            ) { stage.next() }
+                tutorial: "빛이 부족하거나 과다한 경우 아래와 같이 경고가 표시돼요.\n프레임레이트와 셔터앵글을 조절해 문제를 해결할 수 있어요.",
+                instruction: nil
+            )
         case .zoom:
             TutorialStageView(
-                instruction: "줌 슬라이더를 통해 줌 레벨 조절이 가능해요.\n3배 줌을 해보세요.",
-                actionLabel: "건너 뛰기"
-            ) { stage.next() }
+                tutorial: "줌 슬라이더를 통해 영상을 확대할 수 있어요.",
+                instruction: "줌 슬라이더를 통해 2배 줌을 해보세요."
+            )
         case .focus:
             TutorialStageView(
-                instruction: "초점은 AF로 동작하지만, 특별히 초점을 고정하고 싶은 위치를 탭하면 초점을 고정할 수 있어요.\n고정된 초점은 AF-L 버튼을 탭해 해제할 수 있어요. 초점을 고정해보세요.",
-                actionLabel: "건너 뛰기"
-            ) { stage.next() }
+                tutorial: "특정 지점을 탭해 해당 지점에 초점을 고정,\nAF-L 버튼을 탭해 초점 고정을 해제할 수 있어요.",
+                instruction: "원하는 지점에 초점을 고정해보세요."
+            )
         case .selfie:
             TutorialStageView(
-                instruction: "카메라 전환 버튼을 탭해 전후면 카메라간 전환이 가능해요.\n전후면 카메라를 전환해보세요.",
-                actionLabel: "건너 뛰기"
-            ) { stage.next() }
+                tutorial: "카메라 전환 버튼을 탭해 전/후면 카메라 전환이 가능해요.",
+                instruction: "전면 카메라로 전환해보세요."
+            )
         case .record:
             TutorialStageView(
-                instruction: "이제 하단 셔터버튼을 눌러 녹화를 시작해보세요!",
-                actionLabel: "확인"
-            ) { stage.next() }
+                tutorial: "이제 하단 셔터버튼을 눌러 촬영을 시작해보세요.",
+                instruction: nil
+            )
         case .done: EmptyView()
         }
     }
