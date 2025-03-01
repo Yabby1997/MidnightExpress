@@ -40,8 +40,8 @@ struct TutorialView: View {
             )
         case .focus:
             TutorialStageView(
-                tutorial: "특정 지점을 탭해 해당 지점에 초점을 고정,\nAF-L 버튼을 탭해 초점 고정을 해제할 수 있어요.",
-                instruction: "원하는 지점에 초점을 고정해보세요."
+                tutorial: "특정 지점을 한번 탭해 초점을 조절,\n두번 탭해 초점을 고정할 수 있어요.\nAF-L 버튼 혹은 다른 지점을 탭해 고정을 해제할 수 있어요.",
+                instruction: "원하는 지점에대해 초점을 조절 혹은 고정해보세요."
             )
         case .selfie:
             TutorialStageView(

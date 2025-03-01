@@ -15,14 +15,13 @@ struct MidnightExpressView: View {
         VStack() {
             ZStack {
                 CameraView(previewLayer: viewModel.previewLayer)
+                    .onTapGesture(coordinateSpace: .local, perform: viewModel.didTapScreen)
+                    .onTapGesture(count: 2, coordinateSpace: .local, perform: viewModel.didDoubleTapScreen)
                 LevelIndicator(level: $viewModel.level)
-                if let focusLockPoint = viewModel.focusLockPoint {
-                    LockIindicatorView(point: focusLockPoint, isHighlighted: viewModel.isFocusLocked)
-                }
+                LockIindicatorView(viewModel: viewModel)
                 RotatingCameraOverlayView(viewModel: viewModel)
                 DebugView(viewModel: viewModel)
             }
-            .onTapGesture(coordinateSpace: .local, perform: viewModel.didTapScreen)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .aspectRatio(3 / 4, contentMode: .fit)
             .padding(.horizontal, 2)
@@ -38,6 +37,7 @@ struct MidnightExpressView: View {
                 .padding(.horizontal, 40)
             }
         }
+        .padding(.vertical, 8)
         .persistentSystemOverlays(.hidden)
         .statusBar(hidden: true)
         .sensoryFeedback(.impact(weight: .light), trigger: viewModel.focusLockPoint) { $1 != nil }
@@ -49,8 +49,7 @@ struct MidnightExpressView: View {
         }
         .onTapGesture(count: 3) {
             // TODO: Remove this line for release. Just for test only.
-//            UserDefaults.standard.resetSettings()
-            viewModel.tutorialStage = viewModel.tutorialStage == .done ? .fps : .done
+            UserDefaults.standard.resetSettings()
         }
     }
 }

@@ -76,12 +76,13 @@ final class MidnightExpressViewModel: ObservableObject {
     @Published var exposureBias: Float = .zero
     @Published var frameRate: Int = 8
     @Published var exposureOffset: Float = .zero
+    @Published var isFocusLocking = false
     @Published var isFocusLocked = false
     @Published var focusLockPoint: CGPoint?
     @Published var isFrontFacing = false
     @Published var zoomFactor: Float = 1
     @Published var zoomOffset: Float = .zero
-    var isFocusUnlockable: Bool { (isFocusLocked || focusLockPoint != nil) && isFrontFacing == false }
+    var isFocusUnlockable: Bool { (isFocusLocking || isFocusLocked) && isFrontFacing == false }
     
     private var cancellables: Set<AnyCancellable> = []
     private var sessionCancellables: Set<AnyCancellable> = []
@@ -134,12 +135,32 @@ final class MidnightExpressViewModel: ObservableObject {
             .assign(to: &$isFocusLocked)
         
         camera.isFocusLocked
-            .debounce(for: .seconds(1.5), scheduler: DispatchQueue.main)
             .filter { $0 }
-            .map { _ in nil }
+            .map { _ in false }
             .receive(on: DispatchQueue.main)
-            .assign(to: &$focusLockPoint)
+            .assign(to: &$isFocusLocking)
         
+        Publishers.CombineLatest3(
+            camera.focusLockPoint,
+            $isFocusLocking,
+            camera.isFocusLocked
+        )
+        .debounce(for: .seconds(1.5), scheduler: DispatchQueue.main)
+        .filter { !$1 && !$2 }
+        .map { _ in nil }
+        .receive(on: DispatchQueue.main)
+        .assign(to: &$focusLockPoint)
+        
+        Publishers.CombineLatest(
+            camera.focusLockPoint,
+            camera.isFocusLocked
+        )
+        .debounce(for: .seconds(1.5), scheduler: DispatchQueue.main)
+        .filter { $1 }
+        .map { _ in nil }
+        .receive(on: DispatchQueue.main)
+        .assign(to: &$focusLockPoint)
+
         camera.isFrontFacing
             .receive(on: DispatchQueue.main)
             .assign(to: &$isFrontFacing)
@@ -287,10 +308,10 @@ final class MidnightExpressViewModel: ObservableObject {
             }
             .store(in: &tutorialCancellables)
         
-        Publishers.CombineLatest($tutorialStage, $isFocusLocked)
-            .filter { $0 == .focus && $1 }
+        Publishers.CombineLatest($tutorialStage, $focusLockPoint)
+            .filter { $0 == .focus && $1 != nil }
             .first()
-            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .delay(for: .seconds(1.5), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
                 tutorialStage = .selfie
@@ -404,13 +425,25 @@ final class MidnightExpressViewModel: ObservableObject {
         guard tutorialStage.hasReached(.focus) else { return }
         Task {
             do {
+                isFocusLocking = false
+                try camera.adjustFocus(on: position)
+            }
+        }
+    }
+    
+    func didDoubleTapScreen(on position: CGPoint) {
+        guard tutorialStage.hasReached(.focus) else { return }
+        Task {
+            do {
                 try camera.lockFocus(on: position)
+                isFocusLocking = true
             }
         }
     }
     
     func didTapUnlock() {
         Task {
+            isFocusLocking = false
             try camera.unlockFocus()
         }
     }

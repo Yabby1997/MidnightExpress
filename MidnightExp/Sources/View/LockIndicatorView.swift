@@ -9,28 +9,16 @@
 import SwiftUI
 
 struct LockIindicatorView: View {
-    let point: CGPoint
-    let isHighlighted: Bool
+    @StateObject var viewModel: MidnightExpressViewModel
     
     var body: some View {
-        Rectangle()
-            .foregroundStyle(.clear)
-            .border(isHighlighted ? .green : .red, width: 2)
-            .frame(width: 60, height: 60)
-            .position(point)
+        if let point = viewModel.focusLockPoint {
+            Rectangle()
+                .foregroundStyle(.clear)
+                .border(viewModel.isFocusLocked ? .green : viewModel.isFocusLocking ? .red : .yellow, width: 2)
+                .frame(width: 60, height: 60)
+                .position(point)
+                .opacity(viewModel.isFrontFacing ? .zero : 1.0)
+        }
     }
-}
-
-#Preview {
-    LockIindicatorView(
-        point: CGPoint(x: 100, y: 200),
-        isHighlighted: true
-    )
-}
-
-#Preview {
-    LockIindicatorView(
-        point: CGPoint(x: 300, y: 250),
-        isHighlighted: false
-    )
 }
