@@ -39,9 +39,10 @@ struct IntroView: View {
                         }
                     }
                 }
-                .fixedSize(horizontal: false, vertical: true)
                 .font(.system(size: 16, weight: .regular, design: .serif))
                 .foregroundStyle(.white)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity)
             }
         }
         .transition(.slide)

@@ -40,16 +40,13 @@ struct MidnightExpressView: View {
         .padding(.vertical, 8)
         .persistentSystemOverlays(.hidden)
         .statusBar(hidden: true)
+        .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
         .sensoryFeedback(.impact(weight: .light), trigger: viewModel.focusLockPoint) { $1 != nil }
         .sensoryFeedback(.impact(weight: .medium), trigger: viewModel.isFocusLocked) { $1 }
         .sensoryFeedback(.impact(weight: .heavy), trigger: viewModel.isCapturing)
         .sensoryFeedback(.impact(flexibility: .soft), trigger: viewModel.zoomFactor) { abs(Int($0 * 10) - Int($1 * 10)) == 1 }
         .fullScreenCover(isPresented: Binding(get: { viewModel.onboardingStage != .ready }, set: { _ in })) {
             OnboardingView(stage: $viewModel.onboardingStage)
-        }
-        .onTapGesture(count: 3) {
-            // TODO: Remove this line for release. Just for test only.
-            UserDefaults.standard.resetSettings()
         }
     }
 }

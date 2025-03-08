@@ -15,6 +15,7 @@ struct ShutterAngleDialView: View {
     var body: some View {
         Text("\(value)°")
             .font(.system(size: 14, weight: .semibold, design: .monospaced))
+            .foregroundStyle(value == 180 ? .yellow : .white)
             .bottomLined(isVisible: viewModel.tutorialStage == .shutterAngle && value == 360)
             .shadow(radius: 2)
             .rotationEffect(viewModel.orientation.angle)

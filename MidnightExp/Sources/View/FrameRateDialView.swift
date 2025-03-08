@@ -15,6 +15,7 @@ struct FrameRateDialView: View {
     var body: some View {
         Text("\(value)")
             .font(.system(size: 14, weight: .semibold, design: .monospaced))
+            .foregroundStyle(value == 8 ? .yellow : .white)
             .bottomLined(isVisible: viewModel.tutorialStage == .fps && value == 4)
             .shadow(radius: 2)
             .rotationEffect(viewModel.orientation.angle)

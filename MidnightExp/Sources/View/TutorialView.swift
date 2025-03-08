@@ -15,12 +15,12 @@ struct TutorialView: View {
         switch stage {
         case .fps:
             TutorialStageView(
-                tutorial: "프레임레이트가 작아질수록 단절된 영상을,\n커질수록 연속적인 영상을 촬영할 수 있어요.",
+                tutorial: "프레임레이트가 작아질수록 단절된 영상을,\n커질수록 연속적인 영상을 촬영할 수 있어요.\n권장되는 프레임레이트는 8입니다.",
                 instruction: "프레임레이트를 4로 조절해 차이를 느껴보세요."
             )
         case .shutterAngle:
             TutorialStageView(
-                tutorial: "셔터앵글이 커질수록 부드럽고 풍부한 잔상을,\n작아질수록 적은 잔상을 연출할 수 있어요.",
+                tutorial: "셔터앵글이 커질수록 부드럽고 풍부한 잔상을,\n작아질수록 적은 잔상을 연출할 수 있어요.\n권장되는 셔터앵글은 180도입니다.",
                 instruction: "셔터앵글을 360도로 조절해 차이를 느껴보세요."
             )
         case .exposureBias:

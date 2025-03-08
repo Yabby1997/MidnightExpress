@@ -14,7 +14,7 @@ struct AuthorizationView: View {
     var proceed: () -> Void
     
     fileprivate func authButton(systemName: String, isAuthorized: Bool, text: String, action: @escaping () -> Void) -> some View {
-        return HStack {
+        HStack {
             ZStack {
                 Circle()
                     .foregroundStyle(isAuthorized ? .green : .red)
