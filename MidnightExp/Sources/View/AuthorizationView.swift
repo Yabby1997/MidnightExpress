@@ -13,72 +13,62 @@ struct AuthorizationView: View {
     @StateObject var viewModel = AuthorizationViewModel()
     var proceed: () -> Void
     
+    fileprivate func authButton(systemName: String, isAuthorized: Bool, text: String, action: @escaping () -> Void) -> some View {
+        return HStack {
+            ZStack {
+                Circle()
+                    .foregroundStyle(isAuthorized ? .green : .red)
+                    .animation(.easeInOut, value: isAuthorized)
+                Image(systemName: systemName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 30, height: 30)
+            }
+            .frame(width: 60, height: 60)
+            Text(text)
+                .font(.system(size: 18, weight: .semibold, design: .serif))
+                .foregroundStyle(.white)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .onTapGesture(perform: action)
+    }
+    
     var body: some View {
         VStack {
-            Spacer()
             Text("권한 요청")
-                .font(.system(size: 50, weight: .bold, design: .rounded))
-            Text("미드나잇 익스프레스를 이용하기 위해선 다음과 같은 권한이 필요합니다. ")
-                .font(.system(size: 14, weight: .bold, design: .rounded))
-            Spacer()
-            HStack {
-                ZStack {
-                    Circle()
-                        .foregroundStyle(viewModel.isCameraAuthorized ? .green : .red)
-                        .animation(.easeInOut, value: viewModel.isCameraAuthorized)
-                    Image(systemName: "camera.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                }
-                .frame(width: 60, height: 60)
-                Text("영상을 촬영하기 위해 카메라 권한이 필요합니다.")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: 40, weight: .bold, design: .serif))
+                .foregroundStyle(.white)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.bottom, 24)
+            Text("MidnightExpress는 다음과 같은 권한을 필요로합니다.")
+                .font(.system(size: 20, weight: .semibold, design: .serif))
+                .foregroundStyle(.white)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.bottom, 82)
+            VStack(alignment: .leading, spacing: 40) {
+                authButton(
+                    systemName: "camera.fill",
+                    isAuthorized: viewModel.isCameraAuthorized,
+                    text: "영상촬영을 위해 카메라 접근 권한이 필요합니다.",
+                    action: viewModel.didTapVideoAuthButton
+                )
+                authButton(
+                    systemName: "microphone.fill",
+                    isAuthorized: viewModel.isMicAuthorized,
+                    text: "음성녹음을 위해 마이크 접근 권한이 필요합니다.",
+                    action: viewModel.didTapAudioAuthButton
+                )
+                authButton(
+                    systemName: "photo.on.rectangle.angled.fill",
+                    isAuthorized: viewModel.isPhotoLibraryAuthorized,
+                    text: "결과물을 저장하기 위해 사진첩 쓰기 권한이 필요합니다.",
+                    action: viewModel.didTapPhotoAddAuthButton
+                )
             }
-            .onTapGesture {
-                viewModel.didTapVideoAuthButton()
-            }
-            HStack {
-                ZStack {
-                    Circle()
-                        .foregroundStyle(viewModel.isMicAuthorized ? .green : .red)
-                        .animation(.easeInOut, value: viewModel.isMicAuthorized)
-                    Image(systemName: "microphone.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                }
-                .frame(width: 60, height: 60)
-                Text("촬영시 음성을 함께 녹음하기 위해 마이크 권한이 필요합니다.")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 14, weight: .semibold))
-            }
-            .onTapGesture {
-                viewModel.didTapAudioAuthButton()
-            }
-            HStack {
-                ZStack {
-                    Circle()
-                        .foregroundStyle(viewModel.isPhotoLibraryAuthorized ? .green : .red)
-                        .animation(.easeInOut, value: viewModel.isPhotoLibraryAuthorized)
-                    Image(systemName: "photo.on.rectangle.angled.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                }
-                .frame(width: 60, height: 60)
-                Text("촬영한 영상을 사진첩에 저장하기위해 사진첩 쓰기 권한이 필요합니다.")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 14, weight: .semibold))
-            }
-            .onTapGesture {
-                viewModel.didTapPhotoAddAuthButton()
-            }
-            Spacer()
-            Spacer()
         }
-        .foregroundStyle(.white)
         .padding(.horizontal, 12)
         .onAppear(perform: viewModel.onAppear)
         .onChange(of: scenePhase) { oldValue, newValue in

@@ -25,7 +25,6 @@ struct CameraView: UIViewRepresentable {
         override func layoutSubviews() {
             super.layoutSubviews()
             previewLayer.frame = layer.bounds
-            print(previewLayer.frame.size)
         }
         
         private func setupLayer() {
