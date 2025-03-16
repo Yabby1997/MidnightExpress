@@ -8,7 +8,6 @@ let versionString: Plist.Value = "\(majorVersion).\(minorVersion).\(patchVersion
 let plist: InfoPlist = .extendingDefault(
     with: [
         "UILaunchScreen": [
-            "UIImageName": "LaunchScreenIcon",
             "UIColorName": "LaunchScreenBackgroundColor",
         ],
         "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],

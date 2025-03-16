@@ -38,7 +38,7 @@ final class AuthorizationViewModel: ObservableObject {
         authorizationManager.cameraAuthStatusPublisher
             .map { $0.isAuthorized }
             .removeDuplicates()
-            .receive(on: DispatchQueue.main)
+            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .assign(to: &$isCameraAuthorized)
         
         authorizationManager.micAuthStatusPublisher
@@ -48,7 +48,7 @@ final class AuthorizationViewModel: ObservableObject {
         authorizationManager.micAuthStatusPublisher
             .map { $0.isAuthorized }
             .removeDuplicates()
-            .receive(on: DispatchQueue.main)
+            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .assign(to: &$isMicAuthorized)
         
         authorizationManager.photoLibraryAuthStatusPublisher
@@ -58,7 +58,7 @@ final class AuthorizationViewModel: ObservableObject {
         authorizationManager.photoLibraryAuthStatusPublisher
             .map { $0.isAuthorized }
             .removeDuplicates()
-            .receive(on: DispatchQueue.main)
+            .delay(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .assign(to: &$isPhotoLibraryAuthorized)
         
         $isCameraAuthorized.combineLatest($isMicAuthorized, $isPhotoLibraryAuthorized)
