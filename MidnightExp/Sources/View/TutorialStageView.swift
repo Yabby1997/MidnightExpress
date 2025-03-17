@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct TutorialStageView: View {
-    let tutorial: String
-    let instruction: String?
+    let tutorial: LocalizedStringKey
+    let instruction: LocalizedStringKey?
     
     var body: some View {
         VStack(spacing: 12) {

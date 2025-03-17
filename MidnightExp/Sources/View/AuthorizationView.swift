@@ -13,8 +13,8 @@ struct AuthorizationView: View {
     @StateObject var viewModel = AuthorizationViewModel()
     var proceed: () -> Void
     
-    fileprivate func authButton(systemName: String, isAuthorized: Bool, text: String, action: @escaping () -> Void) -> some View {
-        HStack {
+    fileprivate func authButton(systemName: String, isAuthorized: Bool, text: LocalizedStringKey, action: @escaping () -> Void) -> some View {
+        HStack(spacing: 20) {
             ZStack {
                 Circle()
                     .foregroundStyle(isAuthorized ? .green : .red)
@@ -32,17 +32,18 @@ struct AuthorizationView: View {
                 .fixedSize(horizontal: false, vertical: true)
         }
         .onTapGesture(perform: action)
+        .sensoryFeedback(.impact(weight: .heavy), trigger: isAuthorized) { $1 }
     }
     
     var body: some View {
         VStack {
-            Text("권한 요청")
+            Text("authorizationViewTitle")
                 .font(.system(size: 40, weight: .bold, design: .serif))
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 24)
-            Text("MidnightExpress는 다음과 같은 권한을 필요로합니다.")
+            Text("authorizationViewSubtitle")
                 .font(.system(size: 20, weight: .semibold, design: .serif))
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
@@ -52,19 +53,19 @@ struct AuthorizationView: View {
                 authButton(
                     systemName: "camera.fill",
                     isAuthorized: viewModel.isCameraAuthorized,
-                    text: "영상촬영을 위해 카메라 접근 권한이 필요합니다.",
+                    text: "authorizationViewCameraText",
                     action: viewModel.didTapVideoAuthButton
                 )
                 authButton(
                     systemName: "microphone.fill",
                     isAuthorized: viewModel.isMicAuthorized,
-                    text: "음성녹음을 위해 마이크 접근 권한이 필요합니다.",
+                    text: "authorizationViewMicText",
                     action: viewModel.didTapAudioAuthButton
                 )
                 authButton(
                     systemName: "photo.on.rectangle.angled.fill",
                     isAuthorized: viewModel.isPhotoLibraryAuthorized,
-                    text: "결과물을 저장하기 위해 사진첩 쓰기 권한이 필요합니다.",
+                    text: "authorizationViewPhotoLibraryText",
                     action: viewModel.didTapPhotoAddAuthButton
                 )
             }

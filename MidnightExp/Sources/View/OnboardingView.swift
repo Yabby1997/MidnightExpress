@@ -27,6 +27,7 @@ struct OnboardingView: View {
             }
             .animation(.easeInOut, value: stage)
         }
+        .sensoryFeedback(.impact(weight: .heavy), trigger: stage)
         .onAppear(perform: viewModel.onAppear)
         .onChange(of: scenePhase) { _, _ in
             viewModel.onChangeScenePhase()
