@@ -15,6 +15,7 @@ struct ExposureBiasDialView: View {
     var body: some View {
         Text(String(format: "%+0.1f", value))
             .font(.system(size: 14, weight: .semibold, design: .monospaced))
+            .foregroundStyle(value == .zero ? .yellow : .white)
             .bottomLined(isVisible: viewModel.tutorialStage == .exposureBias && value == -2.0)
             .shadow(radius: 2)
             .rotationEffect(viewModel.orientation.angle)
