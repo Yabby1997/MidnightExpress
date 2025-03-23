@@ -10,8 +10,69 @@
             "state" : "new",
             "value" : "MidnightExp"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExp"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExp"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExp"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExp"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExp"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExp"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExp"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExp"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExp"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExp"
+          }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "NSCameraUsageDescription" : {
       "comment" : "Privacy - Camera Usage Description",
@@ -19,31 +80,67 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "illumeter uses the camera to measure and log the exposure value."
+            "value" : "MidnightExpress requires access to the camera for video recording."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress requiere acceso a la cámara para grabación de video."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress nécessite un accès à la caméra pour l’enregistrement vidéo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpressはビデオ録画のためにカメラへのアクセスが必要です。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "해빛은 노출값(EV) 측정과 기록을 위해 카메라를 사용합니다."
-          }
-        }
-      }
-    },
-    "NSLocationWhenInUseUsageDescription" : {
-      "comment" : "Privacy - Location When In Use Usage Description",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "illumeter uses GPS to record the location along with the log."
+            "value" : "MidnightExpress는 비디오 녹화를 위해 카메라 접근이 필요합니다."
           }
         },
-        "ko" : {
+        "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "해빛은 로그 기록시 위치를 함께 기록하기 위해 GPS를 사용합니다."
+            "value" : "MidnightExpress benötigt Zugriff auf die Kamera für die Videoaufnahme."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress требует доступа к камере для записи видео."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress, video kaydı için kameraya erişim gerektirir."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress 需要访问摄像头以进行视频录制。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress 需要訪問攝像頭以進行視頻錄製。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress 需要访问摄像头以进行视频录制。"
           }
         }
       }
@@ -54,7 +151,67 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "마이크좀쓰자"
+            "value" : "MidnightExpress requires access to the mic for audio recording."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress requiere acceso al micrófono para grabación de audio."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress nécessite un accès au microphone pour l’enregistrement audio."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpressは音声録音のためにマイクへのアクセスが必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress는 오디오 녹음을 위해 마이크 접근이 필요합니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress benötigt Zugriff auf das Mikrofon für die Audioaufnahme."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress требует доступа к микрофону для записи аудио."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress, ses kaydı için mikrofona erişim gerektirir."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress 需要访问麦克风以进行音频录制。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress 需要訪問麥克風以進行音頻錄製。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress 需要访问麦克风以进行音频录制。"
           }
         }
       }
@@ -65,7 +222,67 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "저장좀하자"
+            "value" : "MidnightExpress requires access to the photo library to save results."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress requiere acceso a la biblioteca de fotos para guardar resultados."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress nécessite un accès à la bibliothèque de photos pour enregistrer les résultats."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpressは結果を保存するためにフォトライブラリへのアクセスが必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress는 결과를 저장하기 위해 사진 라이브러리 접근이 필요합니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress benötigt Zugriff auf die Fotobibliothek, um Ergebnisse zu speichern."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress требует доступа к фотобиблиотеке для сохранения результатов."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress, sonuçları kaydetmek için fotoğraf galerisine erişim gerektirir."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress 需要访问相册以保存结果。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress 需要訪問相簿以保存結果。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MidnightExpress 需要访问相册以保存结果。"
           }
         }
       }

@@ -30,6 +30,7 @@ struct AuthorizationView: View {
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
+            Spacer()
         }
         .onTapGesture(perform: action)
         .sensoryFeedback(.impact(weight: .heavy), trigger: isAuthorized) { $1 }
@@ -70,7 +71,7 @@ struct AuthorizationView: View {
                 )
             }
         }
-        .padding(.horizontal, 12)
+        .padding(.horizontal, 20)
         .onAppear(perform: viewModel.onAppear)
         .onChange(of: scenePhase) { oldValue, newValue in
             guard newValue == .active else { return }

@@ -48,6 +48,9 @@ struct MidnightExpressView: View {
         .fullScreenCover(isPresented: Binding(get: { viewModel.onboardingStage != .ready }, set: { _ in })) {
             OnboardingView(stage: $viewModel.onboardingStage)
         }
+        .onTapGesture(count: 3) {
+            UserDefaults.standard.resetSettings()
+        }
     }
 }
 

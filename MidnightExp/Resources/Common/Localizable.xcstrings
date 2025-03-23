@@ -1,0 +1,1978 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+      "shouldTranslate" : false
+    },
+    "%@°" : {
+      "shouldTranslate" : false
+    },
+    "%@fps" : {
+      "shouldTranslate" : false
+    },
+    "%lld" : {
+      "shouldTranslate" : false
+    },
+    "%lld°" : {
+      "shouldTranslate" : false
+    },
+    "%lldfps" : {
+      "shouldTranslate" : false
+    },
+    "AF" : {
+      "shouldTranslate" : false
+    },
+    "AF-L" : {
+      "shouldTranslate" : false
+    },
+    "authorizationViewCameraText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Filmen wird Kamerazugriff benötigt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To record videos, camera access is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para grabar videos, se necesita acceso a la cámara."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’accès à la caméra est requis pour filmer."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "動画撮影にはカメラのアクセス許可が必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "영상 촬영을 위해 카메라 접근 권한이 필요합니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voor video-opnames is cameratoegang nodig."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для записи видео требуется доступ к камере."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Video çekimi için kamera erişimi gereklidir."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录制视频需要相机权限。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錄製影片需要相機權限。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拍攝影片需要相機存取權限。"
+          }
+        }
+      }
+    },
+    "authorizationViewMicText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Aufnehmen wird Mikrofonzugriff benötigt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To record audio, microphone access is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para grabar audio, se necesita acceso al micrófono."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’accès au microphone est requis pour enregistrer."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声録音にはマイクのアクセス許可が必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "음성 녹음을 위해 마이크 접근 권한이 필요합니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voor audio-opnames is microfoontoegang nodig."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для записи звука требуется доступ к микрофону."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses kaydı için mikrofon erişimi gereklidir."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录音需要麦克风权限。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錄音需要麥克風權限。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錄音需要麥克風存取權限。"
+          }
+        }
+      }
+    },
+    "authorizationViewPhotoLibraryText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Speichern wird Albumzugriff benötigt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To save results, photo album access is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para guardar resultados, se necesita acceso al álbum."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’accès à l’album est requis pour enregistrer les résultats."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "結果を保存するにはアルバムの書き込み許可が必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "결과물 저장을 위해 사진첩 쓰기 권한이 필요합니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voor het opslaan van resultaten is albumtoegang nodig."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для сохранения результатов требуется доступ к альбому."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonuçları kaydetmek için albüm yazma izni gereklidir."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存结果需要相册写入权限。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "儲存結果需要相簿寫入權限。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "儲存結果需要相簿寫入權限。"
+          }
+        }
+      }
+    },
+    "authorizationViewSubtitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express benötigt die folgenden Berechtigungen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express requires following permissions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express requiere los siguientes permisos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express nécessite les permissions suivantes."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express は以下の権限を必要とします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express는 다음과 같은 권한이 필요합니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express heeft de volgende machtigingen nodig."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express требует следующие разрешения."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express aşağıdaki izinlere ihtiyaç duyar."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express 需要以下权限。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express 需要以下權限。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight Express 需要以下權限。"
+          }
+        }
+      }
+    },
+    "authorizationViewTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berechtigungsanfrage"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permission Request"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicitud de permisos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demande d’autorisation"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "権限リクエスト"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "권한 요청"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Machtigingen aanvragen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запрос разрешений"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin isteği"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "权限请求"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "權限請求"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "權限請求"
+          }
+        }
+      }
+    },
+    "EV: %@" : {
+      "shouldTranslate" : false
+    },
+    "EV: %f" : {
+      "shouldTranslate" : false
+    },
+    "introNextButtonTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次へ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volgende"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далее"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İleri"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
+          }
+        }
+      }
+    },
+    "introPrevButtonTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurück"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anterior"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Précédent"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前へ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이전"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorige"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назад"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上一步"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上一步"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上一步"
+          }
+        }
+      }
+    },
+    "introWelcomeText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canned memories, lasting for centuries."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canned memories, lasting for centuries."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recuerdos enlatados, recuerdos para siglos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canned memories, lasting for centuries."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canned memories, lasting for centuries."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유통기한 만년의 기억 통조림"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canned memories, lasting for centuries."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canned memories, lasting for centuries."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canned memories, lasting for centuries."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记忆罐头，百年珍藏"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記憶罐頭，百年珍藏"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記憶罐頭，百年珍藏"
+          }
+        }
+      }
+    },
+    "introWhatIsStepPrinting" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen bei *Midnight Express*, der *Step Printing* Kamera."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to *Midnight Express*, the *Step Printing* camera."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido a *Midnight Express*, la cámara *Step Printing*."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenue chez *Midnight Express*, la caméra *Step Printing*."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing*カメラ、*Midnight Express*へようこそ。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing* 카메라 *Midnight Express*에 오신 것을 환영합니다.\n"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welkom bij *Midnight Express*, de *Step Printing* camera."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добро пожаловать в *Midnight Express*, камеру *Step Printing*."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing* kamerası *Midnight Express*’e hoş geldiniz."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "欢迎来到 *Midnight Express*，*Step Printing* 相机。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "歡迎來到 *Midnight Express*，*Step Printing* 相機。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "歡迎來到 *Midnight Express*、*Step Printing* 相機。"
+          }
+        }
+      }
+    },
+    "introWhatIsStepPrinting2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing* ist eine Filmtechnik, die statische und bewegte Motive durch niedrige Bildraten und langsame Verschlusszeiten bewusst kontrastiert und so eine traumhafte und dennoch dynamische Atmosphäre schafft."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing* is a filming technique that intentionally contrasts static and moving subjects by utilizing low frame rates and slow shutter speeds, creating a dreamlike yet dynamic atmosphere."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing* es una técnica de filmación que contrasta intencionalmente sujetos estáticos y en movimiento utilizando bajas velocidades de cuadro y velocidades de obturación lentas, creando una atmósfera onírica pero dinámica."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le *Step Printing* est une technique de tournage qui contraste intentionnellement les sujets statiques et en mouvement en utilisant des fréquences d'images basses et des vitesses d'obturation lentes, créant ainsi une atmosphère onirique mais dynamique."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing*は、低フレームレートと遅いシャッタースピードを利用して、静止した被写体と動く被写体を意図的に対比させる撮影技法であり、夢のようながらもダイナミックな雰囲気を作り出します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing*은 낮은 프레임레이트와 느린 셔터스피드를 활용해 정적인 대상과 움직이는 대상을 의도적으로 대비시키는 촬영 기법으로, 몽환적이면서도 역동적인 분위기를 만들어냅니다.\n"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing* is een filmtechniek die opzettelijk statische en bewegende onderwerpen contrasteert door gebruik te maken van lage framesnelheden en trage sluitertijden, waardoor een dromerige maar dynamische sfeer ontstaat."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing* — это техника съемки, которая намеренно противопоставляет статические и движущиеся объекты, используя низкую частоту кадров и медленную выдержку, создавая мечтательную, но динамичную атмосферу."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing*, düşük kare hızları ve yavaş deklanşör hızları kullanarak statik ve hareketli nesneleri kasıtlı olarak zıtlaştıran ve rüya gibi ama dinamik bir atmosfer yaratan bir çekim tekniğidir."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing* 是一种摄影技巧，通过利用低帧率和慢速快门，有意识地对比静态和移动的主体，营造出梦幻而动态的氛围。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing* 是一種攝影技巧，通過利用低幀率和慢速快門，有意識地對比靜態和移動的主體，營造出夢幻而動態的氛圍。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*Step Printing* 是一種攝影技巧，通過利用低幀率和慢速快門，有意識地對比靜態和移動的主體，營造出夢幻而動態的氛圍。"
+          }
+        }
+      }
+    },
+    "introWhatIsStepPrinting3" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es wurde insbesondere in [den Filmen von Wong Kar-wai](https://youtu.be/BpEeMa76TLo?si=sXwRuLlEUUC55vpT), ***Chungking Express (1994)***, ***Fallen Angels (1995)*** und ***In the Mood for Love (2000)*** verwendet, und das im Hintergrund abgespielte Video ist ebenfalls ein mit *Midnight Express* aufgenommenes *Step Printing* Video."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It was notably used in [Wong Kar-wai's films](https://youtu.be/BpEeMa76TLo?si=sXwRuLlEUUC55vpT), ***Chungking Express (1994)***, ***Fallen Angels (1995)***, and ***In the Mood for Love (2000)***, and the video playing in the background is also a *Step Printing* video shot with *Midnight Express*."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se utilizó notablemente en [las películas de Wong Kar-wai](https://youtu.be/BpEeMa76TLo?si=sXwRuLlEUUC55vpT), ***Chungking Express (1994)***, ***Fallen Angels (1995)*** y ***Deseando amar (2000)***, y el video que se reproduce de fondo también es un video de *Step Printing* filmado con *Midnight Express*."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il a notamment été utilisé dans [les films de Wong Kar-wai](https://youtu.be/BpEeMa76TLo?si=sXwRuLlEUUC55vpT), ***Chungking Express (1994)***, ***Les anges déchus (1995)*** et ***In the Mood for Love (2000)***, et la vidéo diffusée en arrière-plan est également une vidéo *Step Printing* tournée avec *Midnight Express*."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ウォン・カーウァイ監督の映画](https://youtu.be/BpEeMa76TLo?si=sXwRuLlEUUC55vpT)『恋する惑星 (1994)』、『天使の涙 (1995)』、『花様年華 (2000)』で顕著に使用されており、背景で再生されているビデオも*Midnight Express*で撮影された*Step Printing*ビデオです。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대표적으로 [왕가위 감독의 작품](https://youtu.be/BpEeMa76TLo?si=sXwRuLlEUUC55vpT), ***중경삼림 (1994)***, ***타락천사 (1995)*** 그리고 ***화양연화 (2000)*** 에서 활용되었으며, 지금 배경에 재생되는 영상 역시 *Midnight Express*로 촬영된 *Step Printing* 영상입니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het werd met name gebruikt in [de films van Wong Kar-wai](https://youtu.be/BpEeMa76TLo?si=sXwRuLlEUUC55vpT), ***Chung Hing Sam Lam (1994)***, ***Fallen Angels (1995)*** en ***In the Mood for Love (2000)***, en de video die op de achtergrond wordt afgespeeld, is ook een *Step Printing* video opgenomen met *Midnight Express*."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Он заметно использовался в фильмах Вонг Кар-вай: «Чунгкингский экспресс» (1994), «Падшие ангелы» (1995) и «Любовное настроение» (2000), а видео, воспроизводимое на заднем плане, также является видео *Step Printing*, снятым с помощью *Midnight Express*."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özellikle [Wong Kar-wai](https://youtu.be/BpEeMa76TLo?si=sXwRuLlEUUC55vpT)'nin ***Hong Kong Ekspresi (1994)***, ***Düşkün Melekler (1995)*** ve ***Aşk Zamanı (2000)*** filmlerinde kullanıldı ve arka planda oynayan video da *Midnight Express* ile çekilmiş bir *Step Printing* videosudur."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "它在王家卫的电影作品《重庆森林 (1994)》、《堕落天使 (1995)》以及《花样年华 (2000)》中得到了显著的运用，而现在背景中播放的影片也是用 *Midnight Express* 拍摄的 *Step Printing* 影片。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "它在[王家衛的電影作品](https://youtu.be/BpEeMa76TLo?si=sXwRuLlEUUC55vpT)《重慶森林 (1994)》、《墮落天使 (1995)》以及《花樣年華 (2000)》中得到了顯著的運用，而現在背景中播放的影片也是用 *Midnight Express* 拍攝的 *Step Printing* 影片。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "它在[王家衛的電影作品](https://youtu.be/BpEeMa76TLo?si=sXwRuLlEUUC55vpT) 《重慶森林 (1994)》、《墮落天使 (1995)》以及《花樣年華 (2000)》中得到了顯著的運用，而現在背景中播放的影片也是用 *Midnight Express* 拍攝的 *Step Printing* 影片。"
+          }
+        }
+      }
+    },
+    "ISO :%@" : {
+      "shouldTranslate" : false
+    },
+    "ISO :%f" : {
+      "shouldTranslate" : false
+    },
+    "Offset: %@" : {
+      "shouldTranslate" : false
+    },
+    "Offset: %f" : {
+      "shouldTranslate" : false
+    },
+    "Over Exposed" : {
+      "shouldTranslate" : false
+    },
+    "Shutter Speed: %@" : {
+      "shouldTranslate" : false
+    },
+    "Shutter Speed: %f" : {
+      "shouldTranslate" : false
+    },
+    "tutorialViewExposureAlertDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bei Unterbelichtung oder Überbelichtung werden Warnungen angezeigt. Sie können versuchen, das Problem zu beheben, indem Sie die Bildrate und den Verschlusswinkel anpassen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warnings are displayed for underexposure or overexposure. You can try to resolve the issue by adjusting the frame rate and shutter angle.\t"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se muestran advertencias por subexposición o sobreexposición. Puede intentar resolver el problema ajustando la velocidad de fotogramas y el ángulo de obturación.\t"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Des avertissements s'affichent en cas de sous-exposition ou de surexposition. Vous pouvez essayer de résoudre le problème en ajustant la fréquence d'images et l'angle d'obturation."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "露出不足または露出過多の場合、警告が表示されます。フレームレートとシャッター角度を調整して問題を解決してみてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "노출이 부족하거나 과다한 경우 경고가 표시돼요.\n프레임레이트와 셔터앵글을 조절해 문제를 해결해 볼 수 있어요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waarschuwingen worden weergegeven bij onderbelichting of overbelichting. U kunt proberen het probleem op te lossen door de framesnelheid en sluitertijd aan te passen."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "При недоэкспонировании или переэкспонировании отображаются предупреждения. Вы можете попытаться устранить проблему, отрегулировав частоту кадров и угол затвора."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düşük pozlama veya aşırı pozlama durumunda uyarılar görüntülenir. Kare hızını ve deklanşör açısını ayarlayarak sorunu çözmeyi deneyebilirsiniz."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "曝光不足或过度曝光时会显示警告。您可以尝试调整帧速率和快门角度来解决问题。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "曝光不足或過度曝光時會顯示警告。您可以嘗試調整幀速率和快門角度來解決問題。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "曝光不足或過度曝光時會顯示警告。您可以嘗試調整幀速率和快門角度來解決問題。"
+          }
+        }
+      }
+    },
+    "tutorialViewExposureBiasDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niedrigere Belichtungskorrekturwerte erzeugen ein dunkleres Gefühl, während höhere Werte ein helleres Gefühl erzeugen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lower exposure compensation values create a darker feel, while higher values create a brighter feel."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los valores de compensación de exposición más bajos crean una sensación más oscura, mientras que los valores más altos crean una sensación más brillante."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Des valeurs de correction d'exposition plus faibles créent une sensation plus sombre, tandis que des valeurs plus élevées créent une sensation plus lumineuse."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "露出補正値が低いほど暗い印象になり、高いほど明るい印象になります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "노출보정값이 작을수록 어두운 느낌을,\n커질수록 밝은 느낌을 연출할 수 있어요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lagere belichtingscompensatiewaarden zorgen voor een donkerder gevoel, terwijl hogere waarden voor een lichter gevoel zorgen.\t"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Более низкие значения компенсации экспозиции создают более темное ощущение, а более высокие значения создают более светлое ощущение."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düşük pozlama telafisi değerleri daha karanlık bir his yaratırken, yüksek değerler daha parlak bir his yaratır."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "较低的曝光补偿值会产生较暗的感觉，而较高的值会产生较亮的感觉。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "較低的曝光補償值會產生較暗的感覺，而較高的值會產生較亮的感覺。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "較低的曝光補償值會產生較暗的感覺，而較高的值會產生較亮的感覺。"
+          }
+        }
+      }
+    },
+    "tutorialViewExposureBiasInstruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senken Sie die Belichtungskorrektur auf -2.0."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lower the exposure compensation to -2.0."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baje la compensación de exposición a -2.0."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baissez la compensation d'exposition à -2.0."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "露出補正を-2.0に下げてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "노출보정값을 -2.0으로 낮춰 차이를 느껴보세요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlaag de belichtingscompensatie naar -2.0."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уменьшите компенсацию экспозиции до -2.0."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozlama telafisini -2.0'a düşürün."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将曝光补偿调低至 -2.0。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將曝光補償調低至 -2.0。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將曝光補償調低至 -2.0。"
+          }
+        }
+      }
+    },
+    "tutorialViewFocusDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen Sie einmal auf einen bestimmten Punkt, um den Fokus anzupassen, und zweimal, um den Fokus zu sperren. Sie können die Sperre aufheben, indem Sie auf AF-L oder einen anderen Punkt tippen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a specific point once to adjust the focus, and tap twice to lock the focus. You can release the lock by tapping AF-L or another point."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque un punto específico una vez para ajustar el enfoque y toque dos veces para bloquear el enfoque. Puede liberar el bloqueo tocando AF-L u otro punto."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuyez une fois sur un point spécifique pour régler la mise au point, et deux fois pour verrouiller la mise au point. Vous pouvez déverrouiller le verrouillage en appuyant sur AF-L ou un autre point."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特定のポイントを1回タップして焦点を調整し、2回タップして焦点をロックできます。AF-Lまたは別のポイントをタップしてロックを解除できます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "특정 지점을 한번 탭해 초점을 조절,\n두번 탭해 초점을 고정할 수 있어요.\nAF-L 혹은 다른 지점을 탭해 고정을 해제할 수 있어요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tik een specifiek punt één keer aan om de focus aan te passen en tik twee keer om de focus te vergrendelen. U kunt de vergrendeling opheffen door op AF-L of een ander punt te tikken."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Коснитесь определенной точки один раз, чтобы настроить фокус, и дважды, чтобы зафиксировать фокус. Вы можете снять блокировку, коснувшись AF-L или другой точки."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odağı ayarlamak için belirli bir noktaya bir kez dokunun ve odağı kilitlemek için iki kez dokunun. AF-L'ye veya başka bir noktaya dokunarak kilidi serbest bırakabilirsiniz."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "单击特定点一次以调整焦点，单击两次以锁定焦点。您可以单击 AF-L 或另一个点来释放锁定。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "輕按特定點一次以調整焦點，輕按兩次以鎖定焦點。您可以輕按 AF-L 或另一個點來釋放鎖定。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "輕按特定點一次以調整焦點，輕按兩次以鎖定焦點。您可以輕按 AF-L 或另一個點來釋放鎖定。"
+          }
+        }
+      }
+    },
+    "tutorialViewFocusInstruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stellen Sie den Fokus auf den gewünschten Punkt ein."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adjust the focus to your desired point."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajuste el enfoque al punto deseado."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustez la mise au point sur le point souhaité."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "希望のポイントに焦点を調整してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원하는 지점에 초점을 조절해보세요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stel de focus in op het gewenste punt."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройте фокус на желаемую точку.\t"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odağı istediğiniz noktaya ayarlayın."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将焦点调整到您想要的位置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將焦點調整到您想要的位置。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將焦點調整到您想要的位置。"
+          }
+        }
+      }
+    },
+    "tutorialViewFPSDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niedrigere Bildraten erzeugen ein abgehacktes Gefühl, während höhere Bildraten ein flüssigeres Gefühl erzeugen. Eine häufig verwendete Bildrate ist 8."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lower frame rates produce a choppy feel, while higher frame rates create a smoother feel. A commonly used frame rate is 8."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las velocidades de fotogramas más bajas producen una sensación entrecortada, mientras que las velocidades de fotogramas más altas crean una sensación más fluida. Una velocidad de fotogramas de uso común es 8."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Des fréquences d'images plus faibles produisent une sensation saccadée, tandis que des fréquences d'images plus élevées créent une sensation plus fluide. Une fréquence d'images couramment utilisée est 8."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フレームレートが低いほど途切れ途切れの印象になり、高いほど滑らかな印象になります。一般的なフレームレートは8です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프레임레이트가 작아질수록 단절된 느낌을,\n커질수록 연속적인 느낌을 연출할 수 있어요.\n흔히 사용되는 프레임레이트는 8입니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lagere framesnelheden produceren een schokkerig gevoel, terwijl hogere framesnelheden een vloeiender gevoel creëren. Een veelgebruikte framesnelheid is 8."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Более низкая частота кадров создает прерывистое ощущение, а более высокая частота кадров создает более плавное ощущение. Обычно используемая частота кадров — 8."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düşük kare hızları kesik kesik bir his verirken, yüksek kare hızları daha akıcı bir his verir. Yaygın olarak kullanılan kare hızı 8'dir."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "较低的帧速率会产生断断续续的感觉，而较高的帧速率会产生更流畅的感觉。常用的帧速率是 8。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "較低的幀速率會產生斷斷續續的感覺，而較高的幀速率會產生更流暢的感覺。常用的幀速率是 8。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "較低的幀速率會產生斷斷續續的感覺，而較高的幀速率會產生更流暢的感覺。常用的幀速率是 8。"
+          }
+        }
+      }
+    },
+    "tutorialViewFPSInstruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senken Sie die Bildrate auf 4."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lower the frame rate to 4."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baje la velocidad de fotogramas a 4."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baissez la fréquence d'images à 4."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フレームレートを4に下げてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프레임레이트를 4로 낮춰 차이를 느껴보세요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlaag de framesnelheid naar 4."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уменьшите частоту кадров до 4."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare hızını 4'e düşürün."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将帧速率调低至 4。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將幀速率調低至 4。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將幀速率調低至 4。"
+          }
+        }
+      }
+    },
+    "tutorialViewRecordDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Vorbereitungen sind abgeschlossen. Drücken Sie den Auslöserknopf, um mit der Aufnahme zu beginnen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All preparations are complete. Press the shutter button to start shooting."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos los preparativos están completos. Presione el botón del obturador para comenzar a disparar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toutes les préparations sont terminées. Appuyez sur le bouton de l'obturateur pour commencer la prise de vue."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべての準備が完了しました。シャッターボタンを押して撮影を開始してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이제 모든 준비는 끝났습니다.\n셔터버튼을 눌러 촬영을 시작해보세요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle voorbereidingen zijn voltooid. Druk op de ontspanknop om te beginnen met fotograferen."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все приготовления завершены. Нажмите кнопку спуска затвора, чтобы начать съемку."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm hazırlıklar tamamlandı. Çekime başlamak için deklanşör düğmesine basın."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有准备工作均已完成。按下快门按钮开始拍摄。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有準備工作均已完成。按下快門按鈕開始拍攝。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有準備工作均已完成。按下快門按鈕開始拍攝。"
+          }
+        }
+      }
+    },
+    "tutorialViewSelfieDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie können zwischen der vorderen und hinteren Kamera wechseln, indem Sie auf die Kameraschalttaste tippen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can switch between front and rear cameras by tapping the camera switch button."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede cambiar entre la cámara frontal y trasera tocando el botón de cambio de cámara."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez basculer entre les caméras avant et arrière en appuyant sur le bouton de commutation de la caméra."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ切り替えボタンをタップすると、フロントカメラとリアカメラを切り替えることができます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카메라 전환 버튼을 탭해 전/후면 카메라 전환이 가능해요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "U kunt schakelen tussen de camera aan de voor- en achterkant door op de cameraschakelknop te tikken."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы можете переключаться между передней и задней камерами, нажав кнопку переключения камеры."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera değiştirme düğmesine dokunarak ön ve arka kameralar arasında geçiş yapabilirsiniz."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以轻按相机切换按钮来切换前后摄像头。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以輕按相機切換按鈕來切換前後相機。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以輕按相機切換按鈕來切換前後相機。"
+          }
+        }
+      }
+    },
+    "tutorialViewSelfieInstruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wechseln Sie zur Frontkamera."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch to the front camera."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambie a la cámara frontal."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passez à la caméra avant."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フロントカメラに切り替えてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전면 카메라로 전환해보세요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schakel over naar de camera aan de voorkant."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переключитесь на переднюю камеру."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ön kameraya geçin."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切换到前置摄像头。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切換到前置相機。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切換到前置相機。"
+          }
+        }
+      }
+    },
+    "tutorialViewShutterAngleDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Größere Verschlusswinkel erzeugen glatte und reichhaltige Nachbilder, während kleinere Winkel weniger Nachbilder erzeugen. Ein häufig verwendeter Verschlusswinkel beträgt 180 Grad."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Larger shutter angles produce smooth and rich afterimages, while smaller angles create fewer afterimages. A commonly used shutter angle is 180 degrees."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los ángulos de obturación más grandes producen imágenes residuales suaves y ricas, mientras que los ángulos más pequeños crean menos imágenes residuales. Un ángulo de obturación de uso común es de 180 grados."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Des angles d'obturation plus grands produisent des images rémanentes douces et riches, tandis que des angles plus petits créent moins d'images rémanentes. Un angle d'obturation couramment utilisé est de 180 degrés."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シャッター角度が大きいほど滑らかで豊かな残像になり、小さいほど残像が少なくなります。一般的なシャッター角度は180度です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "셔터앵글이 커질수록 부드럽고 풍부한 잔상을,\n작아질수록 적은 잔상을 연출할 수 있어요.\n흔히 사용되는 셔터앵글은 180도입니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grotere sluiterhoeken produceren vloeiende en rijke nabeelden, terwijl kleinere hoeken minder nabeelden creëren. Een veelgebruikte sluiterhoek is 180 graden."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Большие углы затвора создают плавные и насыщенные остаточные изображения, а меньшие углы — меньше остаточных изображений. Обычно используемый угол затвора составляет 180 градусов."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha büyük deklanşör açıları pürüzsüz ve zengin art görüntüler üretirken, daha küçük açılar daha az art görüntü oluşturur. Yaygın olarak kullanılan deklanşör açısı 180 derecedir."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "较大的快门角度会产生平滑而丰富的残影，而较小的角度会产生较少的残影。常用的快门角度为 180 度。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "較大的快門角度會產生平滑而豐富的殘影，而較小的角度會產生較少的殘影。常用的快門角度為 180 度。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "較大的快門角度會產生平滑而豐富的殘影，而較小的角度會產生較少的殘影。常用的快門角度為 180 度。"
+          }
+        }
+      }
+    },
+    "tutorialViewShutterAngleInstruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erhöhen Sie den Verschlusswinkel auf 360 Grad."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Increase the shutter angle to 360 degrees."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aumente el ángulo de obturación a 360 grados."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Augmentez l'angle d'obturation à 360 degrés."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シャッター角度を360度に上げてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "셔터앵글을 360도로 높여 차이를 느껴보세요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verhoog de sluiterhoek naar 360 graden."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увеличьте угол затвора до 360 градусов."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deklanşör açısını 360 dereceye yükseltin."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将快门角度提高至 360 度。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將快門角度提高至 360 度。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將快門角度提高至 360 度。"
+          }
+        }
+      }
+    },
+    "tutorialViewZoomDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie können mit dem Zoom-Schieberegler vergrößern."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can zoom in using the zoom slider."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede acercar usando el control deslizante de zoom."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez zoomer à l'aide du curseur de zoom."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ズームスライダーを使用して拡大できます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "줌 슬라이더를 통해 확대할 수 있어요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "U kunt inzoomen met de zoom schuifregelaar."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы можете увеличить масштаб с помощью ползунка масштабирования."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakınlaştırma kaydırıcısını kullanarak yakınlaştırabilirsiniz."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以使用缩放滑块来放大。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以使用縮放滑塊來放大。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以使用縮放滑塊來放大。"
+          }
+        }
+      }
+    },
+    "tutorialViewZoomInstruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewegen Sie den Zoom-Schieberegler, um 2x zu vergrößern."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move the zoom slider to zoom in 2x."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mueva el control deslizante de zoom para acercar 2x."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déplacez le curseur de zoom pour zoomer 2x."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ズームスライダーを動かして2倍に拡大してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "줌 슬라이더를 움직여 2배로 확대 해보세요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beweeg de zoom schuifregelaar om 2x in te zoomen."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переместите ползунок масштабирования, чтобы увеличить масштаб в 2 раза."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakınlaştırma kaydırıcısını 2 kat yakınlaştırmak için hareket ettirin."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移动缩放滑块以放大 2 倍。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移動縮放滑塊以放大 2 倍。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移動縮放滑塊以放大 2 倍。"
+          }
+        }
+      }
+    },
+    "Under Exposed" : {
+      "shouldTranslate" : false
+    }
+  },
+  "version" : "1.0"
+}

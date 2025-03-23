@@ -91,7 +91,7 @@ struct IntroView: View {
         .transition(.slide)
         .animation(.easeInOut, value: isLogDisplaying)
         .animation(.easeInOut, value: introStep)
-        .padding(.horizontal, 12)
+        .padding(.horizontal, 20)
         .task {
             try? await Task.sleep(for: .seconds(2))
             isLogDisplaying = false
