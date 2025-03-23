@@ -20,7 +20,9 @@ struct MidnightExpressView: View {
                 LevelIndicator(level: $viewModel.level)
                 LockIindicatorView(viewModel: viewModel)
                 RotatingCameraOverlayView(viewModel: viewModel)
+#if DEBUG
                 DebugView(viewModel: viewModel)
+#endif
             }
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .aspectRatio(3 / 4, contentMode: .fit)
@@ -48,9 +50,11 @@ struct MidnightExpressView: View {
         .fullScreenCover(isPresented: Binding(get: { viewModel.onboardingStage != .ready }, set: { _ in })) {
             OnboardingView(stage: $viewModel.onboardingStage)
         }
+#if DEBUG
         .onTapGesture(count: 3) {
             UserDefaults.standard.resetSettings()
         }
+#endif
     }
 }
 

@@ -37,7 +37,10 @@ let settings: Settings = .settings(
         "DEVELOPMENT_TEAM": "5HZQ3M82FA",
         "SWIFT_STRICT_CONCURRENCY": "complete"
     ],
-    configurations: [],
+    configurations: [
+        .debug(name: .debug),
+        .release(name: .release),
+    ],
     defaultSettings: .recommended
 )
 
@@ -77,5 +80,21 @@ let targets: [Target] = [
 let project = Project(
     name: "MidnightExp",
     organizationName: "seunghun",
-    targets: targets
+    targets: targets,
+    schemes: [
+        Scheme(
+            name: "MidnightExpDev",
+            buildAction: .buildAction(targets: ["MidnightExpDev"]),
+            runAction: .runAction(configuration: .debug),
+            profileAction: .profileAction(configuration: .debug),
+            analyzeAction: .analyzeAction(configuration: .debug)
+        ),
+        Scheme(
+            name: "MidnightExp",
+            buildAction: .buildAction(targets: ["MidnightExp"]),
+            runAction: .runAction(configuration: .release),
+            archiveAction: .archiveAction(configuration: .release),
+            profileAction: .profileAction(configuration: .release)
+        )
+    ]
 )
