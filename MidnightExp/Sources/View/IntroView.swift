@@ -92,6 +92,7 @@ struct IntroView: View {
         .animation(.easeInOut, value: isLogDisplaying)
         .animation(.easeInOut, value: introStep)
         .padding(.horizontal, 20)
+        .sensoryFeedback(.impact(weight: .heavy), trigger: introStep)
         .task {
             try? await Task.sleep(for: .seconds(2))
             isLogDisplaying = false
